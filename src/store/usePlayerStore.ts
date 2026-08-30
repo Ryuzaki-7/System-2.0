@@ -164,11 +164,7 @@ export const usePlayerStore = create<PlayerState & PlayerActions>()(
         const allObjectivesDone = quest.objectives.every(
           (obj) => obj.isCompleted,
         );
-        console.log(
-          "[DEBUG] Are all objectives done?",
-          allObjectivesDone,
-          quest.objectives,
-        );
+
         if (!allObjectivesDone) {
           console.log("[DEBUG] Aborted: Objectives incomplete.");
           return;
@@ -180,8 +176,8 @@ export const usePlayerStore = create<PlayerState & PlayerActions>()(
         );
         addXP(quest.xpReward);
 
-        // 2. Trigger Loot Roll
-        const droppedLoot = QuestEngine.rollForLoot(quest.type);
+        // 2. Trigger Loot Roll (FIXED: Added get().level)
+        const droppedLoot = QuestEngine.rollForLoot(quest.type, get().level);
         let updatedInventory = [...inventory];
 
         if (droppedLoot) {
@@ -199,12 +195,12 @@ export const usePlayerStore = create<PlayerState & PlayerActions>()(
           }
         }
 
-        // 3. Handle Penalty Survival
+        // 3. Handle Penalty Survival (FIXED: Added get().level)
         if (quest.type === "PENALTY") {
           console.log(
             "[SYSTEM ALERT]: You have survived the Penalty Zone. Restoring daily protocols.",
           );
-          const freshDailyQuests = QuestEngine.generateDailyQuests();
+          const freshDailyQuests = QuestEngine.generateDailyQuests(get().level);
           set((state) => ({
             isPenaltyActive: false,
             activeQuests: [
@@ -240,7 +236,8 @@ export const usePlayerStore = create<PlayerState & PlayerActions>()(
         if (!item || item.quantity <= 0) return;
 
         let newStreakProtection = streakProtectionActive;
-        if (itemId === "streak_shield") {
+        // FIXED: Matched string to 'shield_streak' from loot_pool.json[cite: 5]
+        if (itemId === "shield_streak") {
           newStreakProtection = true;
         }
 
@@ -255,7 +252,8 @@ export const usePlayerStore = create<PlayerState & PlayerActions>()(
       },
 
       triggerPenalty: () => {
-        const penaltyQuest = QuestEngine.generatePenaltyQuest();
+        // FIXED: Added get().level
+        const penaltyQuest = QuestEngine.generatePenaltyQuest(get().level);
         console.log("[SYSTEM ALERT]: TELEPORTING TO PENALTY ZONE.");
 
         set((state) => ({
@@ -272,7 +270,8 @@ export const usePlayerStore = create<PlayerState & PlayerActions>()(
         console.log(
           "[SYSTEM] Penalty manually cleared. Restoring daily protocols.",
         );
-        const freshDailyQuests = QuestEngine.generateDailyQuests();
+        // FIXED: Added get().level
+        const freshDailyQuests = QuestEngine.generateDailyQuests(get().level);
         set((state) => ({
           isPenaltyActive: false,
           activeQuests: [
