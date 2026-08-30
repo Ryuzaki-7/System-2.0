@@ -1,0 +1,124 @@
+{
+  "penalty_pool": [
+    {
+      "id": "pen_forced_march",
+      "title": "PENALTY ZONE: THE DESERT",
+      "description": "Daily targets were missed. The System has transported you to the Penalty Zone. You must survive the forced march to unlock your interface.",
+      "targets": {
+        "E-Rank": "30 minutes continuous walking pad",
+        "D-Rank": "45 minutes continuous walking pad",
+        "C-Rank": "45 minutes incline walk",
+        "B-Rank": "60 minutes incline walk",
+        "A-Rank": "90 minutes incline walk"
+      },
+      "statReward": "AGI",
+      "statGain": 0,
+      "xpReward": 25
+    },
+    {
+      "id": "pen_gravity_chamber",
+      "title": "PENALTY ZONE: HIGH GRAVITY",
+      "description": "Failure to complete the Daily Quest has resulted in a localized gravity shift. Weakness is not tolerated.",
+      "targets": {
+        "E-Rank": "2 min Wall Sit, 1 min Plank",
+        "D-Rank": "4 min Wall Sit, 2 min Plank",
+        "C-Rank": "5 min Wall Sit, 3 min Plank (Weighted)",
+        "B-Rank": "6 min Wall Sit, 4 min Plank (Weighted)",
+        "A-Rank": "8 min Wall Sit, 5 min Plank (Weighted)"
+      },
+      "statReward": "VIT",
+      "statGain": 0,
+      "xpReward": 25
+    },
+    {
+      "id": "pen_centipede_swarm",
+      "title": "PENALTY ZONE: POISONOUS SWARM",
+      "description": "The System detects lethargy. A swarm is approaching. You must keep moving to evade the venom.",
+      "targets": {
+        "E-Rank": "50 Glute Bridges and 25 Knee Pushups",
+        "D-Rank": "100 Alternating Lunges and 50 Knee Pushups",
+        "C-Rank": "100 Bodyweight Squats and 50 Standard Pushups",
+        "B-Rank": "150 Bodyweight Squats and 75 Standard Pushups",
+        "A-Rank": "200 Bodyweight Squats and 100 Standard Pushups"
+      },
+      "statReward": "STR",
+      "statGain": 0,
+      "xpReward": 25
+    },
+    {
+      "id": "pen_oxygen_depletion",
+      "title": "PENALTY ZONE: OXYGEN DEPLETION",
+      "description": "Your biological engine has stalled. The System is forcing a hard reboot of your cardiovascular system.",
+      "targets": {
+        "E-Rank": "50 Jumping Jacks, 25 Mountain Climbers",
+        "D-Rank": "100 Jumping Jacks, 50 Mountain Climbers",
+        "C-Rank": "150 Jumping Jacks, 75 Mountain Climbers",
+        "B-Rank": "200 Jumping Jacks, 100 Mountain Climbers",
+        "A-Rank": "300 Jumping Jacks, 150 Mountain Climbers"
+      },
+      "statReward": "VIT",
+      "statGain": 0,
+      "xpReward": 25
+    },
+    {
+      "id": "pen_the_swamp",
+      "title": "PENALTY ZONE: THE SWAMP",
+      "description": "The ground is sinking. You must maintain absolute full-body tension to avoid being pulled under.",
+      "targets": {
+        "E-Rank": "3x30 sec Hollow Body Hold, 3x30 sec Superman Hold",
+        "D-Rank": "4x40 sec Hollow Body Hold, 4x40 sec Superman Hold",
+        "C-Rank": "5x60 sec Hollow Body Hold, 5x60 sec Superman Hold",
+        "B-Rank": "5x90 sec Hollow Body Hold, 5x90 sec Superman Hold",
+        "A-Rank": "5x120 sec Hollow Body Hold, 5x120 sec Superman Hold"
+      },
+      "statReward": "VIT",
+      "statGain": 0,
+      "xpReward": 25
+    },
+    {
+      "id": "pen_shadow_assassins",
+      "title": "PENALTY ZONE: SHADOW ASSASSINS",
+      "description": "You are surrounded. You must stay low to the ground and evade constant strikes from the shadows.",
+      "targets": {
+        "E-Rank": "20 Inchworms, 40 Plank Shoulder Taps",
+        "D-Rank": "30 Inchworms, 60 Plank Shoulder Taps",
+        "C-Rank": "50 Inchworms, 100 Plank Shoulder Taps",
+        "B-Rank": "75 Inchworms, 150 Plank Shoulder Taps",
+        "A-Rank": "100 Inchworms, 200 Plank Shoulder Taps"
+      },
+      "statReward": "AGI",
+      "statGain": 0,
+      "xpReward": 25
+    },
+    {
+      "id": "pen_titans_grip",
+      "title": "PENALTY ZONE: TITAN'S GRIP",
+      "description": "The floor has vanished. Your survival depends entirely on the endurance of your forearms.",
+      "targets": {
+        "E-Rank": "Accumulate 2 minutes of Dead Hangs (or Heavy DB Holds)",
+        "D-Rank": "Accumulate 3 minutes of Dead Hangs (or Heavy DB Holds)",
+        "C-Rank": "Accumulate 5 minutes of Dead Hangs",
+        "B-Rank": "Accumulate 7 minutes of Dead Hangs",
+        "A-Rank": "Accumulate 10 minutes of Dead Hangs"
+      },
+      "statReward": "STR",
+      "statGain": 0,
+      "xpReward": 25
+    },
+    {
+      "id": "pen_mana_burn",
+      "title": "PENALTY ZONE: MANA BURN",
+      "description": "Your mana circuits are stalling. You must force a massive metabolic spike to clear the blockage.",
+      "targets": {
+        "E-Rank": "15 mins Walking Pad Intervals (1 min max incline/speed, 1 min slow)",
+        "D-Rank": "20 mins Walking Pad Intervals (1 min max incline/speed, 1 min slow)",
+        "C-Rank": "30 mins Walking Pad Intervals (1 min max incline/speed, 1 min slow)",
+        "B-Rank": "45 mins Walking Pad Intervals (1 min max incline/speed, 1 min slow)",
+        "A-Rank": "60 mins Walking Pad Intervals (1 min max incline/speed, 1 min slow)"
+      },
+      "statReward": "VIT",
+      "statGain": 0,
+      "xpReward": 25
+    }
+  ]
+}

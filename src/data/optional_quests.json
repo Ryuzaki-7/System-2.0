@@ -1,0 +1,76 @@
+{
+  "optional_pool": [
+    {
+      "id": "opt_protein",
+      "description": "[Side Quest] High-Protein Target: Muscle is built in the kitchen. Hit your daily macro baseline without compromise.",
+      "targetCount": 1,
+      "statReward": "VIT",
+      "statGain": 1,
+      "xpReward": 40
+    },
+    {
+      "id": "opt_hydration",
+      "description": "[Side Quest] 4 Liters Hydration: Flush the system, lubricate the joints, and keep physical performance peaking.",
+      "targetCount": 4,
+      "statReward": "VIT",
+      "statGain": 1,
+      "xpReward": 40
+    },
+    {
+      "id": "opt_sleep",
+      "description": "[Side Quest] 7.5+ Hours Quality Sleep: Recovery is where the actual leveling up happens. Guard your sleep schedule.",
+      "targetCount": 1,
+      "statReward": "VIT",
+      "statGain": 2,
+      "xpReward": 50
+    },
+    {
+      "id": "opt_spanish",
+      "description": "[Side Quest] Duolingo Spanish Streak: Cognitive plasticity requires daily resistance. Complete your lesson and expand your world.",
+      "targetCount": 1,
+      "statReward": "PER",
+      "statGain": 1,
+      "xpReward": 30
+    },
+    {
+      "id": "opt_prep_airfryer",
+      "description": "[Side Quest] The Air Fryer Protocol: Marinate and prep tomorrow's chicken breast tonight. Eliminate decision fatigue and win tomorrow before it starts.",
+      "targetCount": 1,
+      "statReward": "INT",
+      "statGain": 1,
+      "xpReward": 35
+    },
+    {
+      "id": "opt_chess",
+      "description": "[Side Quest] Tactical Vision: Complete today's chess puzzles. Train your mind to calculate variations and see three steps ahead of the board.",
+      "targetCount": 1,
+      "statReward": "INT",
+      "statGain": 1,
+      "xpReward": 40
+    },
+    {
+      "id": "opt_reading",
+      "description": "[Side Quest] Deep Lore Detachment: Read one chapter of a physical book or e-reader before bed. Disconnect from screens to drop your heart rate.",
+      "targetCount": 1,
+      "statReward": "PER",
+      "statGain": 1,
+      "xpReward": 35
+    },
+    {
+      "id": "opt_sunlight",
+      "description": "[Side Quest] Morning Sunlight Alignment: Get 10-15 minutes of direct sun within an hour of waking. Anchor your circadian rhythm for better sleep tonight.",
+      "targetCount": 1,
+      "statReward": "VIT",
+      "statGain": 1,
+      "xpReward": 30
+    },
+    {
+      "id": "opt_stretching",
+      "description": "[Side Quest] Postural Reset: 10 minutes of targeted mobility work for tight shoulders and hip flexors. Protect your biomechanics.",
+      "targetCount": 1,
+      "statReward": "AGI",
+      "statGain": 1,
+      "xpReward": 35
+    }
+  ]
+}

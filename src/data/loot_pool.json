@@ -1,0 +1,215 @@
+{
+  "loot_pool": [
+    {
+      "id": "potion_stamina_minor",
+      "name": "Minor Stamina Potion",
+      "type": "CONSUMABLE",
+      "rarity": "COMMON",
+      "unlockRank": "E-Rank",
+      "description": "A faint blue liquid that clears the mind. Reduces System Fatigue by 20 points, allowing you to bypass minor lethargy penalties.[cite: 4]",
+      "dropWeight": 40,
+      "effect": { "target": "fatigue", "value": -20 }
+    },
+    {
+      "id": "potion_stamina_greater",
+      "name": "Greater Stamina Potion",
+      "type": "CONSUMABLE",
+      "rarity": "RARE",
+      "unlockRank": "C-Rank",
+      "description": "A dense, crackling blue liquid. Instantly clears 80 points of System Fatigue and grants a temporary burst of focus.",
+      "dropWeight": 15,
+      "effect": { "target": "fatigue", "value": -80 }
+    },
+    {
+      "id": "potion_healing_minor",
+      "name": "Minor Healing Potion",
+      "type": "CONSUMABLE",
+      "rarity": "COMMON",
+      "unlockRank": "E-Rank",
+      "description": "Restores micro-tears in muscle tissue. Restores 30 HP.[cite: 4]",
+      "dropWeight": 35,
+      "effect": { "target": "hp", "value": 30 }
+    },
+    {
+      "id": "potion_healing_greater",
+      "name": "Greater Healing Potion",
+      "type": "CONSUMABLE",
+      "rarity": "RARE",
+      "unlockRank": "C-Rank",
+      "description": "Advanced cellular regeneration. Restores 100 HP, pulling you back from the brink of a System Failure.",
+      "dropWeight": 15,
+      "effect": { "target": "hp", "value": 100 }
+    },
+    {
+      "id": "token_tactician",
+      "name": "Tactician's Token",
+      "type": "VOUCHER",
+      "rarity": "UNCOMMON",
+      "unlockRank": "E-Rank",
+      "description": "System clearance granted. Redeem this token for one hour of guilt-free, focused map-grinding, vehicle meta practice, or ELO-pushing on the board.[cite: 4]",
+      "dropWeight": 25,
+      "effect": {
+        "target": "leisure",
+        "value": "GeoGuessr / Chess Session[cite: 4]"
+      }
+    },
+    {
+      "id": "token_architect",
+      "name": "Architect's Core",
+      "type": "VOUCHER",
+      "rarity": "UNCOMMON",
+      "unlockRank": "E-Rank",
+      "description": "Redeem for 2 hours of dedicated Prism Launcher instance management, modpack configuration, or localized block-building without impacting daily productivity metrics.[cite: 4]",
+      "dropWeight": 20,
+      "effect": {
+        "target": "leisure",
+        "value": "Minecraft Server Administration[cite: 4]"
+      }
+    },
+    {
+      "id": "token_radiant",
+      "name": "Radiant's Permit",
+      "type": "VOUCHER",
+      "rarity": "UNCOMMON",
+      "unlockRank": "E-Rank",
+      "description": "Sanctioned combat training. Redeem for an extended, guilt-free session of tactical shooter progression.[cite: 4]",
+      "dropWeight": 20,
+      "effect": { "target": "leisure", "value": "Valorant Session[cite: 4]" }
+    },
+    {
+      "id": "token_bard",
+      "name": "Bard's Resonance",
+      "type": "VOUCHER",
+      "rarity": "UNCOMMON",
+      "unlockRank": "E-Rank",
+      "description": "A token humming with acoustic energy. Redeem to spend time mastering A to D Major chord transitions, practicing strumming, or jamming to Spotify AI Mix playlists of Sufi fusion and blues without checking the clock.[cite: 4]",
+      "dropWeight": 20,
+      "effect": {
+        "target": "leisure",
+        "value": "Acoustic Guitar / Music Exploration[cite: 4]"
+      }
+    },
+    {
+      "id": "token_logic",
+      "name": "Rune of the Construct",
+      "type": "VOUCHER",
+      "rarity": "RARE",
+      "unlockRank": "D-Rank",
+      "description": "System bypass authorized. Redeem for uninterrupted deep-work time to engineer custom Python Discord bot integrations or tackle C++ data structures on LeetCode.[cite: 4]",
+      "dropWeight": 15,
+      "effect": {
+        "target": "leisure",
+        "value": "Custom Development Project[cite: 4]"
+      }
+    },
+    {
+      "id": "token_paddock",
+      "name": "Apex Paddock Pass",
+      "type": "VOUCHER",
+      "rarity": "RARE",
+      "unlockRank": "D-Rank",
+      "description": "High-velocity clearance. Redeem to activate a multi-monitor viewing setup for an entire F1 TV Premium race weekend session without System penalty.[cite: 4]",
+      "dropWeight": 10,
+      "effect": {
+        "target": "leisure",
+        "value": "F1 Race Weekend Clearance[cite: 4]"
+      }
+    },
+    {
+      "id": "token_maester",
+      "name": "Maester's Scroll",
+      "type": "VOUCHER",
+      "rarity": "UNCOMMON",
+      "unlockRank": "E-Rank",
+      "description": "A parchment reeking of old dust and dragon glass. Redeem for guilt-free immersion into Westeros history, Valyrian lore, or reading A Song of Ice and Fire.",
+      "dropWeight": 20,
+      "effect": {
+        "target": "leisure",
+        "value": "Game of Thrones Lore / Reading"
+      }
+    },
+    {
+      "id": "token_linguist",
+      "name": "Linguist's Respite",
+      "type": "VOUCHER",
+      "rarity": "UNCOMMON",
+      "unlockRank": "E-Rank",
+      "description": "Automatically preserves your Duolingo Spanish streak without requiring manual input for the day, or grants 1 hour of unmetered speaking practice time.",
+      "dropWeight": 20,
+      "effect": { "target": "streakProtection", "value": "Spanish_Streak" }
+    },
+    {
+      "id": "token_designer",
+      "name": "Architect's Blueprint",
+      "type": "VOUCHER",
+      "rarity": "RARE",
+      "unlockRank": "D-Rank",
+      "description": "Redeem to spend time mocking up or browsing modern residential design aesthetics, off-white wall concepts, and dark wooden door patterns without productivity guilt.",
+      "dropWeight": 15,
+      "effect": { "target": "leisure", "value": "Design Research" }
+    },
+    {
+      "id": "boost_double_xp",
+      "name": "Double XP Token",
+      "type": "BUFF",
+      "rarity": "RARE",
+      "unlockRank": "C-Rank",
+      "description": "Doubles all XP gained from completed Daily and Gym Quests for the next 24 hours.",
+      "dropWeight": 10,
+      "effect": { "target": "xp_multiplier", "value": 2.0 }
+    },
+    {
+      "id": "shield_streak",
+      "name": "System Override: Streak Shield",
+      "type": "BUFF",
+      "rarity": "EPIC",
+      "unlockRank": "B-Rank",
+      "description": "A highly coveted artifact. Automatically deployed at midnight if a Daily Quest is failed, completely bypassing the Penalty Zone and preserving your streak.[cite: 4]",
+      "dropWeight": 5,
+      "effect": { "target": "streakProtection", "value": true }
+    },
+    {
+      "id": "hunters_key",
+      "name": "Hunter's Key (Rank C)",
+      "type": "VOUCHER",
+      "rarity": "EPIC",
+      "unlockRank": "C-Rank",
+      "description": "A key emitting a dark aura. Grants authorization to bypass the Air Fryer protocol. Redeem for one absolute, unmitigated Cheat Meal.[cite: 4]",
+      "dropWeight": 4,
+      "effect": {
+        "target": "leisure",
+        "value": "Cheat Meal Authorization[cite: 4]"
+      }
+    },
+    {
+      "id": "elixir_strength",
+      "name": "Elixir of Strength",
+      "type": "CONSUMABLE",
+      "rarity": "LEGENDARY",
+      "unlockRank": "A-Rank",
+      "description": "A dense, boiling red liquid. Drinking this permanently increases your STR stat by 1 point without requiring a level-up.",
+      "dropWeight": 2,
+      "effect": { "target": "permanent_stat", "stat": "STR", "value": 1 }
+    },
+    {
+      "id": "box_random_s",
+      "name": "S-Rank Loot Box",
+      "type": "CHEST",
+      "rarity": "LEGENDARY",
+      "unlockRank": "S-Rank",
+      "description": "A glowing golden box. Can be opened in the inventory to yield a massive burst of XP, Stat Points, and highly rare Vouchers.[cite: 4]",
+      "dropWeight": 1,
+      "effect": { "target": "loot_roll", "value": "S_RANK_REWARD[cite: 4]" }
+    },
+    {
+      "id": "skill_shadow_extraction",
+      "name": "Skill Tome: Shadow Extraction",
+      "type": "CONSUMABLE",
+      "rarity": "MYTHIC",
+      "unlockRank": "S-Rank",
+      "description": "An abyssal tome. Consuming this grants the ability to instantly 'extract' the completion status of a failed daily quest, turning a miss into a retroactive success.",
+      "dropWeight": 0.5,
+      "effect": { "target": "retroactive_complete", "value": true }
+    }
+  ]
+}

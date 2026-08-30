@@ -1,0 +1,1196 @@
+{
+  "daily_pool": [
+    {
+      "id": "shred_steps",
+      "description": "Daily Movement Baseline (Utilize walking pad during work/entertainment)",
+      "targets": {
+        "E-Rank": "7,500 Steps",
+        "D-Rank": "10,000 Steps",
+        "C-Rank": "10,000 Steps + 15 min Incline Walk",
+        "B-Rank": "12,000 Steps + 20 min Incline Walk",
+        "A-Rank": "15,000 Steps + 30 min Incline Walk"
+      },
+      "statReward": "VIT",
+      "statGain": 2,
+      "xpReward": 120
+    }
+  ],
+  "gym_pool": {
+    "Monday": {
+      "focus": "Chest & Triceps (Push A)",
+      "exercise_pool": [
+        {
+          "id": "ch_bb_bench",
+          "description": "Barbell Bench Press (4x8-10)",
+          "targets": {
+            "E-Rank": "30 kg",
+            "D-Rank": "40 kg",
+            "C-Rank": "50 kg",
+            "B-Rank": "65 kg",
+            "A-Rank": "80+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 65
+        },
+        {
+          "id": "ch_db_bench",
+          "description": "Flat Dumbbell Press (3x8-12)",
+          "targets": {
+            "E-Rank": "15 kg",
+            "D-Rank": "20 kg",
+            "C-Rank": "25 kg",
+            "B-Rank": "30 kg",
+            "A-Rank": "35+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 50
+        },
+        {
+          "id": "ch_inc_bb",
+          "description": "Incline Barbell Press (4x8-10)",
+          "targets": {
+            "E-Rank": "20 kg",
+            "D-Rank": "30 kg",
+            "C-Rank": "40 kg",
+            "B-Rank": "55 kg",
+            "A-Rank": "70+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 65
+        },
+        {
+          "id": "ch_inc_db",
+          "description": "Incline Dumbbell Press (3x10-12)",
+          "targets": {
+            "E-Rank": "12.5 kg",
+            "D-Rank": "15 kg",
+            "C-Rank": "20 kg",
+            "B-Rank": "25 kg",
+            "A-Rank": "30+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 50
+        },
+        {
+          "id": "ch_dec_press",
+          "description": "Decline Machine Press (3x10-15)",
+          "targets": {
+            "E-Rank": "30 kg",
+            "D-Rank": "40 kg",
+            "C-Rank": "55 kg",
+            "B-Rank": "70 kg",
+            "A-Rank": "85+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 45
+        },
+        {
+          "id": "ch_cable_fly_mid",
+          "description": "Mid-Pulley Cable Crossovers (3x12-15)",
+          "targets": {
+            "E-Rank": "10 kg",
+            "D-Rank": "15 kg",
+            "C-Rank": "20 kg",
+            "B-Rank": "25 kg",
+            "A-Rank": "30+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "ch_cable_fly_low",
+          "description": "Low-to-High Cable Flyes (3x12-15)",
+          "targets": {
+            "E-Rank": "7.5 kg",
+            "D-Rank": "12.5 kg",
+            "C-Rank": "17.5 kg",
+            "B-Rank": "22.5 kg",
+            "A-Rank": "27.5+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "ch_pec_deck",
+          "description": "Pec Deck Machine (3x12-15, 2 sec squeeze)",
+          "targets": {
+            "E-Rank": "25 kg",
+            "D-Rank": "35 kg",
+            "C-Rank": "45 kg",
+            "B-Rank": "55 kg",
+            "A-Rank": "70+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 25
+        },
+        {
+          "id": "ch_pushup_weighted",
+          "description": "Weighted Pushups (3xAMRAP)",
+          "unlockRank": "C-Rank",
+          "targets": {
+            "C-Rank": "Bodyweight",
+            "B-Rank": "+10 kg",
+            "A-Rank": "+20 kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 40
+        },
+        {
+          "id": "tr_rope_push",
+          "description": "Rope Tricep Pushdowns (3x12-15)",
+          "targets": {
+            "E-Rank": "10 kg",
+            "D-Rank": "15 kg",
+            "C-Rank": "22.5 kg",
+            "B-Rank": "27.5 kg",
+            "A-Rank": "35+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 25
+        },
+        {
+          "id": "tr_vbar_push",
+          "description": "V-Bar Pushdowns (3x10-12)",
+          "targets": {
+            "E-Rank": "12.5 kg",
+            "D-Rank": "17.5 kg",
+            "C-Rank": "25 kg",
+            "B-Rank": "30 kg",
+            "A-Rank": "40+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 25
+        },
+        {
+          "id": "tr_skullcrusher",
+          "description": "EZ Bar Skullcrushers (3x10-12)",
+          "targets": {
+            "E-Rank": "15 kg",
+            "D-Rank": "20 kg",
+            "C-Rank": "25 kg",
+            "B-Rank": "30 kg",
+            "A-Rank": "40+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 35
+        },
+        {
+          "id": "tr_overhead_cable",
+          "description": "Overhead Cable Extensions (3x12-15)",
+          "targets": {
+            "E-Rank": "10 kg",
+            "D-Rank": "15 kg",
+            "C-Rank": "20 kg",
+            "B-Rank": "25 kg",
+            "A-Rank": "32.5+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 25
+        },
+        {
+          "id": "tr_db_ext",
+          "description": "Seated Single DB Overhead Extension (3x10-12)",
+          "targets": {
+            "E-Rank": "10 kg",
+            "D-Rank": "15 kg",
+            "C-Rank": "20 kg",
+            "B-Rank": "25 kg",
+            "A-Rank": "30+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "tr_dips",
+          "description": "Parallel Bar Dips (3xAMRAP)",
+          "unlockRank": "C-Rank",
+          "targets": {
+            "C-Rank": "3-5 Reps",
+            "B-Rank": "8-10 Reps",
+            "A-Rank": "15+ Reps / Weighted"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 45
+        },
+        {
+          "id": "tr_close_grip",
+          "description": "Close-Grip Bench Press (3x8-10)",
+          "targets": {
+            "E-Rank": "25 kg",
+            "D-Rank": "35 kg",
+            "C-Rank": "45 kg",
+            "B-Rank": "60 kg",
+            "A-Rank": "75+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 50
+        }
+      ]
+    },
+    "Tuesday": {
+      "focus": "Back & Biceps (Pull A)",
+      "exercise_pool": [
+        {
+          "id": "bk_pullups",
+          "description": "Wide Grip Pull-ups (3xAMRAP)",
+          "unlockRank": "C-Rank",
+          "targets": {
+            "C-Rank": "3-5 Reps",
+            "B-Rank": "8-10 Reps",
+            "A-Rank": "12+ Reps / Weighted"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 55
+        },
+        {
+          "id": "bk_chinups",
+          "description": "Underhand Chin-ups (3xAMRAP)",
+          "unlockRank": "C-Rank",
+          "targets": {
+            "C-Rank": "4-6 Reps",
+            "B-Rank": "10-12 Reps",
+            "A-Rank": "15+ Reps / Weighted"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 55
+        },
+        {
+          "id": "bk_lat_pull_wide",
+          "description": "Wide Grip Lat Pulldown (3x10-12)",
+          "targets": {
+            "E-Rank": "35 kg",
+            "D-Rank": "45 kg",
+            "C-Rank": "55 kg",
+            "B-Rank": "65 kg",
+            "A-Rank": "80+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 40
+        },
+        {
+          "id": "bk_lat_pull_close",
+          "description": "V-Grip Lat Pulldown (3x10-12)",
+          "targets": {
+            "E-Rank": "40 kg",
+            "D-Rank": "50 kg",
+            "C-Rank": "60 kg",
+            "B-Rank": "70 kg",
+            "A-Rank": "85+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 40
+        },
+        {
+          "id": "bk_bb_row",
+          "description": "Barbell Bent-Over Rows (4x8-10)",
+          "targets": {
+            "E-Rank": "40 kg",
+            "D-Rank": "50 kg",
+            "C-Rank": "65 kg",
+            "B-Rank": "80 kg",
+            "A-Rank": "95+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 65
+        },
+        {
+          "id": "bk_db_row",
+          "description": "Single-Arm DB Rows (3x10-12 per arm)",
+          "targets": {
+            "E-Rank": "15 kg",
+            "D-Rank": "20 kg",
+            "C-Rank": "25 kg",
+            "B-Rank": "32.5 kg",
+            "A-Rank": "40+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 45
+        },
+        {
+          "id": "bk_cable_row",
+          "description": "Seated Cable Rows (3x10-12)",
+          "targets": {
+            "E-Rank": "35 kg",
+            "D-Rank": "45 kg",
+            "C-Rank": "55 kg",
+            "B-Rank": "70 kg",
+            "A-Rank": "85+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 35
+        },
+        {
+          "id": "bk_tbar_row",
+          "description": "T-Bar Rows (3x8-12)",
+          "targets": {
+            "E-Rank": "25 kg",
+            "D-Rank": "40 kg",
+            "C-Rank": "55 kg",
+            "B-Rank": "70 kg",
+            "A-Rank": "90+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 50
+        },
+        {
+          "id": "bk_pullover",
+          "description": "Straight-Arm Cable Pulldowns (3x12-15)",
+          "targets": {
+            "E-Rank": "15 kg",
+            "D-Rank": "20 kg",
+            "C-Rank": "27.5 kg",
+            "B-Rank": "35 kg",
+            "A-Rank": "45+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "bi_bb_curl",
+          "description": "Standing Barbell Curls (3x8-10)",
+          "targets": {
+            "E-Rank": "15 kg",
+            "D-Rank": "20 kg",
+            "C-Rank": "25 kg",
+            "B-Rank": "30 kg",
+            "A-Rank": "40+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 35
+        },
+        {
+          "id": "bi_db_curl",
+          "description": "Alternating DB Curls (3x10-12)",
+          "targets": {
+            "E-Rank": "8 kg",
+            "D-Rank": "10 kg",
+            "C-Rank": "12.5 kg",
+            "B-Rank": "15 kg",
+            "A-Rank": "20+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "bi_hammer_curl",
+          "description": "DB Hammer Curls (3x10-12)",
+          "targets": {
+            "E-Rank": "10 kg",
+            "D-Rank": "12.5 kg",
+            "C-Rank": "15 kg",
+            "B-Rank": "17.5 kg",
+            "A-Rank": "22.5+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "bi_rope_hammer",
+          "description": "Cable Rope Hammer Curls (3x12-15)",
+          "targets": {
+            "E-Rank": "12.5 kg",
+            "D-Rank": "17.5 kg",
+            "C-Rank": "22.5 kg",
+            "B-Rank": "27.5 kg",
+            "A-Rank": "35+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 25
+        },
+        {
+          "id": "bi_preacher_ez",
+          "description": "EZ Bar Preacher Curls (3x10-12)",
+          "targets": {
+            "E-Rank": "10 kg",
+            "D-Rank": "15 kg",
+            "C-Rank": "20 kg",
+            "B-Rank": "25 kg",
+            "A-Rank": "35+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "bi_inc_curl",
+          "description": "Incline Seated DB Curls (3x10-12)",
+          "targets": {
+            "E-Rank": "6 kg",
+            "D-Rank": "8 kg",
+            "C-Rank": "10 kg",
+            "B-Rank": "12.5 kg",
+            "A-Rank": "17.5+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        }
+      ]
+    },
+    "Wednesday": {
+      "focus": "Quads & Hamstrings (Leg Day)",
+      "exercise_pool": [
+        {
+          "id": "lg_back_squat",
+          "description": "Barbell Back Squats (4x6-8)",
+          "unlockRank": "C-Rank",
+          "targets": {
+            "C-Rank": "60 kg",
+            "B-Rank": "80 kg",
+            "A-Rank": "100+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 2,
+          "xpReward": 85
+        },
+        {
+          "id": "lg_front_squat",
+          "description": "Front Squats (3x8-10)",
+          "unlockRank": "C-Rank",
+          "targets": {
+            "C-Rank": "40 kg",
+            "B-Rank": "60 kg",
+            "A-Rank": "80+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 2,
+          "xpReward": 80
+        },
+        {
+          "id": "lg_hack_squat",
+          "description": "Machine Hack Squats (3x10-12)",
+          "targets": {
+            "E-Rank": "Machine Empty",
+            "D-Rank": "+20 kg",
+            "C-Rank": "+40 kg",
+            "B-Rank": "+70 kg",
+            "A-Rank": "+100+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 2,
+          "xpReward": 60
+        },
+        {
+          "id": "lg_leg_press",
+          "description": "45-Degree Leg Press (3x10-15)",
+          "targets": {
+            "E-Rank": "80 kg",
+            "D-Rank": "120 kg",
+            "C-Rank": "160 kg",
+            "B-Rank": "210 kg",
+            "A-Rank": "260+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 50
+        },
+        {
+          "id": "lg_bulgarian",
+          "description": "Bulgarian Split Squats (3x10 per leg)",
+          "targets": {
+            "E-Rank": "Bodyweight",
+            "D-Rank": "10 kg DBs",
+            "C-Rank": "15 kg DBs",
+            "B-Rank": "20 kg DBs",
+            "A-Rank": "25+ kg DBs"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 65
+        },
+        {
+          "id": "lg_walking_lunge",
+          "description": "DB Walking Lunges (3x12 steps)",
+          "targets": {
+            "E-Rank": "Bodyweight",
+            "D-Rank": "10 kg DBs",
+            "C-Rank": "15 kg DBs",
+            "B-Rank": "20 kg DBs",
+            "A-Rank": "25+ kg DBs"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 55
+        },
+        {
+          "id": "lg_leg_ext",
+          "description": "Leg Extensions (3x15, hold at top)",
+          "targets": {
+            "E-Rank": "25 kg",
+            "D-Rank": "35 kg",
+            "C-Rank": "50 kg",
+            "B-Rank": "65 kg",
+            "A-Rank": "80+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "lg_rdl_bb",
+          "description": "Barbell RDLs (4x8-10)",
+          "targets": {
+            "E-Rank": "60 kg",
+            "D-Rank": "85 kg",
+            "C-Rank": "110 kg",
+            "B-Rank": "130 kg",
+            "A-Rank": "150+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 2,
+          "xpReward": 80
+        },
+        {
+          "id": "lg_rdl_db",
+          "description": "Dumbbell RDLs (3x10-12)",
+          "targets": {
+            "E-Rank": "20 kg DBs",
+            "D-Rank": "25 kg DBs",
+            "C-Rank": "32.5 kg DBs",
+            "B-Rank": "40 kg DBs",
+            "A-Rank": "50+ kg DBs"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 60
+        },
+        {
+          "id": "lg_ham_curl_lying",
+          "description": "Lying Leg Curls (3x12-15)",
+          "targets": {
+            "E-Rank": "20 kg",
+            "D-Rank": "30 kg",
+            "C-Rank": "40 kg",
+            "B-Rank": "50 kg",
+            "A-Rank": "65+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "lg_ham_curl_seated",
+          "description": "Seated Leg Curls (3x12-15)",
+          "targets": {
+            "E-Rank": "25 kg",
+            "D-Rank": "35 kg",
+            "C-Rank": "45 kg",
+            "B-Rank": "60 kg",
+            "A-Rank": "75+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "lg_calf_standing",
+          "description": "Standing Calf Raises (4x15-20)",
+          "targets": {
+            "E-Rank": "Bodyweight",
+            "D-Rank": "+20 kg",
+            "C-Rank": "+40 kg",
+            "B-Rank": "+60 kg",
+            "A-Rank": "+80+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 25
+        },
+        {
+          "id": "lg_calf_seated",
+          "description": "Seated Calf Raises (3x15-20)",
+          "targets": {
+            "E-Rank": "20 kg",
+            "D-Rank": "30 kg",
+            "C-Rank": "45 kg",
+            "B-Rank": "60 kg",
+            "A-Rank": "80+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 20
+        }
+      ]
+    },
+    "Thursday": {
+      "focus": "Shoulders & Abs (Push B)",
+      "exercise_pool": [
+        {
+          "id": "sh_ohp_bb",
+          "description": "Standing Barbell OHP (4x6-8)",
+          "targets": {
+            "E-Rank": "20 kg",
+            "D-Rank": "30 kg",
+            "C-Rank": "40 kg",
+            "B-Rank": "50 kg",
+            "A-Rank": "65+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 70
+        },
+        {
+          "id": "sh_ohp_db",
+          "description": "Seated DB Shoulder Press (3x8-10)",
+          "targets": {
+            "E-Rank": "10 kg",
+            "D-Rank": "15 kg",
+            "C-Rank": "20 kg",
+            "B-Rank": "25 kg",
+            "A-Rank": "32.5+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 55
+        },
+        {
+          "id": "sh_arnold",
+          "description": "Arnold Presses (3x10-12)",
+          "targets": {
+            "E-Rank": "8 kg",
+            "D-Rank": "12.5 kg",
+            "C-Rank": "17.5 kg",
+            "B-Rank": "22.5 kg",
+            "A-Rank": "27.5+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 45
+        },
+        {
+          "id": "sh_lat_raise_db",
+          "description": "DB Lateral Raises (4x15)",
+          "targets": {
+            "E-Rank": "5 kg",
+            "D-Rank": "7.5 kg",
+            "C-Rank": "10 kg",
+            "B-Rank": "12.5 kg",
+            "A-Rank": "15+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "sh_lat_raise_cable",
+          "description": "Single-Arm Cable Laterals (3x15 per arm)",
+          "targets": {
+            "E-Rank": "2.5 kg",
+            "D-Rank": "5 kg",
+            "C-Rank": "7.5 kg",
+            "B-Rank": "10 kg",
+            "A-Rank": "12.5+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "sh_front_raise",
+          "description": "Cable Front Raises (3x12-15)",
+          "targets": {
+            "E-Rank": "5 kg",
+            "D-Rank": "10 kg",
+            "C-Rank": "15 kg",
+            "B-Rank": "20 kg",
+            "A-Rank": "25+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 25
+        },
+        {
+          "id": "sh_facepull",
+          "description": "Cable Face Pulls (4x15, focus on posture)",
+          "targets": {
+            "E-Rank": "12.5 kg",
+            "D-Rank": "17.5 kg",
+            "C-Rank": "22.5 kg",
+            "B-Rank": "30 kg",
+            "A-Rank": "40+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "sh_rev_pec",
+          "description": "Reverse Pec Deck (3x15)",
+          "targets": {
+            "E-Rank": "15 kg",
+            "D-Rank": "20 kg",
+            "C-Rank": "30 kg",
+            "B-Rank": "40 kg",
+            "A-Rank": "50+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 25
+        },
+        {
+          "id": "sh_shrugs",
+          "description": "DB Shrugs (3x12-15, 2 sec hold)",
+          "targets": {
+            "E-Rank": "15 kg",
+            "D-Rank": "20 kg",
+            "C-Rank": "25 kg",
+            "B-Rank": "32.5 kg",
+            "A-Rank": "40+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "ab_cable_crunch",
+          "description": "Heavy Cable Crunches (3x15)",
+          "targets": {
+            "E-Rank": "25 kg",
+            "D-Rank": "35 kg",
+            "C-Rank": "45 kg",
+            "B-Rank": "60 kg",
+            "A-Rank": "75+ kg"
+          },
+          "statReward": "VIT",
+          "statGain": 1,
+          "xpReward": 35
+        },
+        {
+          "id": "ab_leg_raise",
+          "description": "Hanging Leg Raises (3x10-15)",
+          "unlockRank": "C-Rank",
+          "targets": {
+            "C-Rank": "10 Reps (Knees)",
+            "B-Rank": "10 Reps (Straight)",
+            "A-Rank": "15+ Reps (Straight)"
+          },
+          "statReward": "VIT",
+          "statGain": 1,
+          "xpReward": 40
+        },
+        {
+          "id": "ab_wheel",
+          "description": "Ab Wheel Rollouts (3x10-12)",
+          "targets": {
+            "E-Rank": "5 Reps (Knees)",
+            "D-Rank": "10 Reps (Knees)",
+            "C-Rank": "15 Reps (Knees)",
+            "B-Rank": "5 Reps (Standing)",
+            "A-Rank": "10+ Reps (Standing)"
+          },
+          "statReward": "VIT",
+          "statGain": 1,
+          "xpReward": 45
+        },
+        {
+          "id": "ab_plank_weighted",
+          "description": "Weighted Plank (3x60 sec)",
+          "targets": {
+            "E-Rank": "Bodyweight",
+            "D-Rank": "+10 kg",
+            "C-Rank": "+15 kg",
+            "B-Rank": "+25 kg",
+            "A-Rank": "+35+ kg"
+          },
+          "statReward": "VIT",
+          "statGain": 1,
+          "xpReward": 40
+        },
+        {
+          "id": "ab_russian_twist",
+          "description": "Weighted Russian Twists (3x20)",
+          "targets": {
+            "E-Rank": "Bodyweight",
+            "D-Rank": "5 kg",
+            "C-Rank": "10 kg",
+            "B-Rank": "15 kg",
+            "A-Rank": "20+ kg"
+          },
+          "statReward": "VIT",
+          "statGain": 1,
+          "xpReward": 35
+        }
+      ]
+    },
+    "Friday": {
+      "focus": "Chest & Back (Antagonist Volume)",
+      "exercise_pool": [
+        {
+          "id": "cb_inc_smith",
+          "description": "Incline Smith Machine Press (3x10-12)",
+          "targets": {
+            "E-Rank": "20 kg",
+            "D-Rank": "30 kg",
+            "C-Rank": "40 kg",
+            "B-Rank": "55 kg",
+            "A-Rank": "70+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 45
+        },
+        {
+          "id": "cb_chest_supp_row",
+          "description": "Chest-Supported DB Rows (3x10-12)",
+          "targets": {
+            "E-Rank": "12.5 kg",
+            "D-Rank": "17.5 kg",
+            "C-Rank": "22.5 kg",
+            "B-Rank": "30 kg",
+            "A-Rank": "35+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 45
+        },
+        {
+          "id": "cb_db_pullover",
+          "description": "DB Pullovers (Expand the ribcage) (3x12)",
+          "targets": {
+            "E-Rank": "15 kg",
+            "D-Rank": "20 kg",
+            "C-Rank": "25 kg",
+            "B-Rank": "32.5 kg",
+            "A-Rank": "40+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 35
+        },
+        {
+          "id": "cb_spoto_press",
+          "description": "Spoto Press (Bench with pause) (3x8)",
+          "targets": {
+            "E-Rank": "25 kg",
+            "D-Rank": "35 kg",
+            "C-Rank": "45 kg",
+            "B-Rank": "60 kg",
+            "A-Rank": "75+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 60
+        },
+        {
+          "id": "cb_pendlay_row",
+          "description": "Pendlay Rows (3x8)",
+          "targets": {
+            "E-Rank": "30 kg",
+            "D-Rank": "40 kg",
+            "C-Rank": "55 kg",
+            "B-Rank": "70 kg",
+            "A-Rank": "85+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 65
+        },
+        {
+          "id": "cb_landmine_press",
+          "description": "Standing Landmine Press (3x10 per arm)",
+          "targets": {
+            "E-Rank": "Bar Only",
+            "D-Rank": "+10 kg",
+            "C-Rank": "+15 kg",
+            "B-Rank": "+25 kg",
+            "A-Rank": "+35+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 45
+        },
+        {
+          "id": "cb_meadows_row",
+          "description": "Meadows Rows (3x10 per arm)",
+          "targets": {
+            "E-Rank": "Bar Only",
+            "D-Rank": "+10 kg",
+            "C-Rank": "+20 kg",
+            "B-Rank": "+30 kg",
+            "A-Rank": "+45+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 50
+        },
+        {
+          "id": "cb_guillotine",
+          "description": "Guillotine Press (Light weight, deep stretch) (3x12)",
+          "targets": {
+            "E-Rank": "20 kg",
+            "D-Rank": "30 kg",
+            "C-Rank": "40 kg",
+            "B-Rank": "50 kg",
+            "A-Rank": "60+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 40
+        },
+        {
+          "id": "cb_rack_pulls",
+          "description": "Rack Pulls (Above knee) (3x8)",
+          "targets": {
+            "E-Rank": "80 kg",
+            "D-Rank": "110 kg",
+            "C-Rank": "140 kg",
+            "B-Rank": "170 kg",
+            "A-Rank": "200+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 75
+        }
+      ]
+    },
+    "Saturday": {
+      "focus": "Biceps & Triceps (Arm Forge)",
+      "exercise_pool": [
+        {
+          "id": "ar_spider_curl",
+          "description": "Spider Curls (3x10-12)",
+          "targets": {
+            "E-Rank": "15 kg",
+            "D-Rank": "20 kg",
+            "C-Rank": "25 kg",
+            "B-Rank": "30 kg",
+            "A-Rank": "35+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "ar_drag_curl",
+          "description": "Barbell Drag Curls (3x10-12)",
+          "targets": {
+            "E-Rank": "15 kg",
+            "D-Rank": "20 kg",
+            "C-Rank": "25 kg",
+            "B-Rank": "30 kg",
+            "A-Rank": "40+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 35
+        },
+        {
+          "id": "ar_cross_body_hammer",
+          "description": "Cross-Body Hammer Curls (3x12)",
+          "targets": {
+            "E-Rank": "8 kg",
+            "D-Rank": "12.5 kg",
+            "C-Rank": "15 kg",
+            "B-Rank": "20 kg",
+            "A-Rank": "25+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "ar_reverse_curl",
+          "description": "EZ Bar Reverse Curls (3x12-15)",
+          "targets": {
+            "E-Rank": "10 kg",
+            "D-Rank": "15 kg",
+            "C-Rank": "20 kg",
+            "B-Rank": "25 kg",
+            "A-Rank": "30+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 30
+        },
+        {
+          "id": "ar_cable_curl_high",
+          "description": "High Cable Curls (Front double bicep pose) (3x15)",
+          "targets": {
+            "E-Rank": "7.5 kg",
+            "D-Rank": "12.5 kg",
+            "C-Rank": "17.5 kg",
+            "B-Rank": "22.5 kg",
+            "A-Rank": "30+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 25
+        },
+        {
+          "id": "ar_kickback_cable",
+          "description": "Cable Tricep Kickbacks (3x12-15 per arm)",
+          "targets": {
+            "E-Rank": "5 kg",
+            "D-Rank": "7.5 kg",
+            "C-Rank": "12.5 kg",
+            "B-Rank": "17.5 kg",
+            "A-Rank": "22.5+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 25
+        },
+        {
+          "id": "ar_french_press",
+          "description": "Seated EZ Bar French Press (3x10-12)",
+          "targets": {
+            "E-Rank": "15 kg",
+            "D-Rank": "20 kg",
+            "C-Rank": "25 kg",
+            "B-Rank": "32.5 kg",
+            "A-Rank": "40+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 35
+        },
+        {
+          "id": "ar_jm_press",
+          "description": "JM Press (3x8-10)",
+          "targets": {
+            "E-Rank": "20 kg",
+            "D-Rank": "30 kg",
+            "C-Rank": "40 kg",
+            "B-Rank": "55 kg",
+            "A-Rank": "70+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 50
+        },
+        {
+          "id": "ar_tate_press",
+          "description": "DB Tate Press (3x12)",
+          "targets": {
+            "E-Rank": "10 kg",
+            "D-Rank": "15 kg",
+            "C-Rank": "20 kg",
+            "B-Rank": "25 kg",
+            "A-Rank": "32.5+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 35
+        },
+        {
+          "id": "ar_pushdown_reverse",
+          "description": "Reverse-Grip Pushdowns (3x12-15)",
+          "targets": {
+            "E-Rank": "10 kg",
+            "D-Rank": "15 kg",
+            "C-Rank": "20 kg",
+            "B-Rank": "25 kg",
+            "A-Rank": "32.5+ kg"
+          },
+          "statReward": "STR",
+          "statGain": 1,
+          "xpReward": 25
+        }
+      ]
+    },
+    "Sunday": {
+      "focus": "Active Recovery",
+      "exercise_pool": [
+        {
+          "id": "rec_foam_roll_legs",
+          "description": "Foam Roll: IT Bands & Quads",
+          "targets": {
+            "E-Rank": "10 mins",
+            "D-Rank": "15 mins",
+            "C-Rank": "15 mins",
+            "B-Rank": "20 mins",
+            "A-Rank": "20 mins"
+          },
+          "statReward": "VIT",
+          "statGain": 1,
+          "xpReward": 20
+        },
+        {
+          "id": "rec_foam_roll_back",
+          "description": "Foam Roll: Thoracic Spine & Lats",
+          "targets": {
+            "E-Rank": "10 mins",
+            "D-Rank": "15 mins",
+            "C-Rank": "15 mins",
+            "B-Rank": "20 mins",
+            "A-Rank": "20 mins"
+          },
+          "statReward": "VIT",
+          "statGain": 1,
+          "xpReward": 20
+        },
+        {
+          "id": "rec_yoga_hips",
+          "description": "Hip Mobility Flow (Pigeon, Couch Stretch)",
+          "targets": {
+            "E-Rank": "15 mins",
+            "D-Rank": "20 mins",
+            "C-Rank": "20 mins",
+            "B-Rank": "30 mins",
+            "A-Rank": "30 mins"
+          },
+          "statReward": "AGI",
+          "statGain": 1,
+          "xpReward": 25
+        },
+        {
+          "id": "rec_dead_hang",
+          "description": "Spinal Decompression Dead Hang",
+          "targets": {
+            "E-Rank": "3x30 sec",
+            "D-Rank": "3x45 sec",
+            "C-Rank": "3x60 sec",
+            "B-Rank": "3x90 sec",
+            "A-Rank": "3x120 sec"
+          },
+          "statReward": "VIT",
+          "statGain": 1,
+          "xpReward": 20
+        },
+        {
+          "id": "rec_sauna",
+          "description": "Sauna / Steam Room Session",
+          "targets": {
+            "E-Rank": "15 mins",
+            "D-Rank": "15 mins",
+            "C-Rank": "20 mins",
+            "B-Rank": "20 mins",
+            "A-Rank": "25 mins"
+          },
+          "statReward": "VIT",
+          "statGain": 1,
+          "xpReward": 15
+        }
+      ]
+    }
+  }
+}

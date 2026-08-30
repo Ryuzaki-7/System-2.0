@@ -1,0 +1,507 @@
+{
+  "emergency_quests": [
+    {
+      "id": "eq_01",
+      "title": "The Sloth Barrier",
+      "rank": "F",
+      "trigger": "Inactivity detected for over 2 consecutive hours while the app is active.",
+      "objective": "Perform 20 glute bridges or a 3-minute max-incline walking pad sprint immediately to break the stagnation buffer.",
+      "time_limit_minutes": 3,
+      "reward": {
+        "exp": 15,
+        "effect": "Status Restoration"
+      },
+      "penalty": {
+        "status_effect": "Lethargy",
+        "stat_modifiers": { "agility": -1 },
+        "duration_hours": 2
+      }
+    },
+    {
+      "id": "eq_02",
+      "title": "Hydration Protocol",
+      "rank": "F",
+      "trigger": "Daily water intake metric falls below target threshold by mid-afternoon.",
+      "objective": "Consume 500ml of water immediately.",
+      "time_limit_minutes": 10,
+      "reward": {
+        "exp": 10,
+        "stamina": 5
+      },
+      "penalty": {
+        "hp_loss": 10
+      }
+    },
+    {
+      "id": "eq_03",
+      "title": "Posture Correction",
+      "rank": "F",
+      "trigger": "Accelerometer detects prolonged slouching or hunching over a desk.",
+      "objective": "Straighten spine, roll shoulders back, and hold optimal ergonomic posture.",
+      "time_limit_minutes": 5,
+      "reward": {
+        "exp": 5
+      },
+      "penalty": {
+        "status_effect": "Back Strain",
+        "stat_modifiers": { "vitality": -1 },
+        "duration_hours": 1
+      }
+    },
+    {
+      "id": "eq_04",
+      "title": "Midnight Breach",
+      "rank": "E",
+      "trigger": "App remains open and active past midnight on a weekday.",
+      "objective": "Lock device, close all applications, and initiate the sleep cycle.",
+      "time_limit_minutes": 5,
+      "reward": {
+        "exp": 20,
+        "buff": "Morning XP Multiplier"
+      },
+      "penalty": {
+        "status_effect": "Sleep Deprivation",
+        "stat_modifiers": { "intelligence": -2, "perception": -2 },
+        "duration_hours": 24
+      }
+    },
+    {
+      "id": "eq_05",
+      "title": "Visual Calibration",
+      "rank": "E",
+      "trigger": "Screen-on time exceeds 90 continuous minutes without a break.",
+      "objective": "Look away from all screens and focus on an object at least 20 feet away.",
+      "time_limit_minutes": 2,
+      "reward": {
+        "exp": 10
+      },
+      "penalty": {
+        "status_effect": "Eye Strain",
+        "stat_modifiers": { "perception": -1 },
+        "duration_hours": 0.5
+      }
+    },
+    {
+      "id": "eq_06",
+      "title": "Sudden Surge",
+      "rank": "D",
+      "trigger": "Daily step count is falling significantly behind the pacing curve by 6:00 PM.",
+      "objective": "Execute a rapid indoor session using the walking pad or march outdoors.",
+      "time_limit_minutes": 20,
+      "reward": {
+        "exp": 50,
+        "agility": 2
+      },
+      "penalty": {
+        "status_effect": "Sedentary Decay",
+        "description": "Daily stat growth halved for the day."
+      }
+    },
+    {
+      "id": "eq_07",
+      "title": "Caloric Deficit Alert",
+      "rank": "D",
+      "trigger": "Logged nutritional intake registers a dangerous drop or skips a primary meal window.",
+      "objective": "Consume a high-protein meal or snack to stabilize core energy.",
+      "time_limit_minutes": 30,
+      "reward": {
+        "exp": 40,
+        "hp_recovery": 10
+      },
+      "penalty": {
+        "status_effect": "Muscular Catabolism",
+        "stat_modifiers": { "strength": -2 },
+        "duration_hours": 12
+      }
+    },
+    {
+      "id": "eq_08",
+      "title": "Code Anomaly Detected",
+      "rank": "D",
+      "trigger": "Extended debugging session with frequent compilation errors or syntax stalls in the IDE.",
+      "objective": "Step away from the screen, walk around the room, and reset cognitive focus.",
+      "time_limit_minutes": 5,
+      "reward": {
+        "exp": 30,
+        "buff": "Logic Boost"
+      },
+      "penalty": {
+        "status_effect": "Brain Fog",
+        "stat_modifiers": { "intelligence": -3 },
+        "duration_hours": 2
+      }
+    },
+    {
+      "id": "eq_09",
+      "title": "Awakening Stretch",
+      "rank": "D",
+      "trigger": "First launch of the application in the morning.",
+      "objective": "Perform a full-body dynamic stretch routine before interacting with any other apps.",
+      "time_limit_minutes": 5,
+      "reward": {
+        "exp": 25,
+        "stamina": 5
+      },
+      "penalty": {
+        "status_effect": "Stiff Joints",
+        "stat_modifiers": { "agility": -1 },
+        "duration_hours": 1
+      }
+    },
+    {
+      "id": "eq_10",
+      "title": "The Distraction Trap",
+      "rank": "C",
+      "trigger": "Rapid switching away from productive apps or development tools repeatedly.",
+      "objective": "Lock focus on a single task without opening social media or secondary tabs.",
+      "time_limit_minutes": 25,
+      "reward": {
+        "exp": 60,
+        "intelligence": 2
+      },
+      "penalty": {
+        "status_effect": "Fragmented Focus",
+        "description": "XP gains reduced by 50%",
+        "duration_hours": 1
+      }
+    },
+    {
+      "id": "eq_11",
+      "title": "Core Stabilization",
+      "rank": "C",
+      "trigger": "Health Connect data shows a drop in weekly active movement averages.",
+      "objective": "Hold a strict plank position to reinforce core structural integrity.",
+      "time_limit_minutes": 2,
+      "reward": {
+        "exp": 45,
+        "strength": 2
+      },
+      "penalty": {
+        "hp_loss": 15
+      }
+    },
+    {
+      "id": "eq_12",
+      "title": "Breath of the Hunter",
+      "rank": "C",
+      "trigger": "Elevated heart rate detected via wearable without a corresponding high-activity log (stress spike).",
+      "objective": "Execute 10 slow, deep box-breathing cycles.",
+      "time_limit_minutes": 3,
+      "reward": {
+        "exp": 20,
+        "effect": "Stress Normalized"
+      },
+      "penalty": {
+        "status_effect": "Anxiety Spike",
+        "stat_modifiers": { "perception": -2 },
+        "duration_hours": 1
+      }
+    },
+    {
+      "id": "eq_13",
+      "title": "Room Clear",
+      "rank": "C",
+      "trigger": "Workspace environment clutter detected or left untidy for multiple days.",
+      "objective": "Completely organize and clear the physical desk/workspace area.",
+      "time_limit_minutes": 10,
+      "reward": {
+        "exp": 35,
+        "buff": "Mental Clarity"
+      },
+      "penalty": {
+        "status_effect": "Cluttered Mind",
+        "stat_modifiers": { "intelligence": -1 },
+        "duration_hours": 4
+      }
+    },
+    {
+      "id": "eq_14",
+      "title": "Nightly Fasting Enforcement",
+      "rank": "C",
+      "trigger": "Attempting to log a late-night snack past the configured fasting window.",
+      "objective": "Resist the impulse and consume zero calories until the morning window opens.",
+      "time_limit_minutes": null,
+      "reward": {
+        "exp": 50,
+        "buff": "Metabolic Efficiency"
+      },
+      "penalty": {
+        "hp_loss": 20,
+        "status_effect": "Heavy Digestion"
+      }
+    },
+    {
+      "id": "eq_15",
+      "title": "Upper Body Activation",
+      "rank": "C",
+      "trigger": "Upper body workout split day is skipped or delayed past schedule.",
+      "objective": "Complete 30 push-ups in maximum of 2 sets.",
+      "time_limit_minutes": 5,
+      "reward": {
+        "exp": 60,
+        "strength": 3
+      },
+      "penalty": {
+        "hp_loss": 25
+      }
+    },
+    {
+      "id": "eq_16",
+      "title": "The 10K Defiance",
+      "rank": "B",
+      "trigger": "It is 9:00 PM and daily step count is lagging behind the 10,000-step target by more than 3,000 steps.",
+      "objective": "Put on shoes and complete a brisk indoor walking pad or outdoor marching session to close the gap.",
+      "time_limit_minutes": 45,
+      "reward": {
+        "exp": 120,
+        "agility": 4,
+        "effect": "Streak Preserved"
+      },
+      "penalty": {
+        "status_effect": "Guilt of the Slacker",
+        "stat_modifiers": { "all_stats": -3 },
+        "duration_hours": 12
+      }
+    },
+    {
+      "id": "eq_17",
+      "title": "Iron Will Execution",
+      "rank": "B",
+      "trigger": "Procrastination alert triggered on a major project task or complex coding problem.",
+      "objective": "Write the core implementation or solve the primary blocker immediately without opening other tabs.",
+      "time_limit_minutes": 30,
+      "reward": {
+        "exp": 150,
+        "intelligence": 5
+      },
+      "penalty": {
+        "status_effect": "Impending Doom",
+        "stat_modifiers": { "intelligence": -5 },
+        "description": "Automatic task failure"
+      }
+    },
+    {
+      "id": "eq_18",
+      "title": "Sleep Debt Liquidation",
+      "rank": "B",
+      "trigger": "Health Connect reports total sleep duration under 5 hours for the previous night.",
+      "objective": "Execute an immediate power nap or enforce an early lights-out schedule.",
+      "time_limit_minutes": 20,
+      "reward": {
+        "exp": 80,
+        "effect": "Fatigue Cleared"
+      },
+      "penalty": {
+        "status_effect": "Exhaustion",
+        "max_hp_multiplier": 0.5,
+        "duration_hours": 24
+      }
+    },
+    {
+      "id": "eq_19",
+      "title": "Endurance Crucible",
+      "rank": "B",
+      "trigger": "Resting heart rate or biometric strain metrics indicate a drop in cardiovascular conditioning.",
+      "objective": "Maintain a continuous fast walking pace at maximum incline on the walking pad.",
+      "time_limit_minutes": 30,
+      "reward": {
+        "exp": 200,
+        "stamina": 5,
+        "agility": 3
+      },
+      "penalty": {
+        "hp_loss": 40,
+        "status_effect": "Cardio Deficit"
+      }
+    },
+    {
+      "id": "eq_20",
+      "title": "The Hydration Marathon",
+      "rank": "B",
+      "trigger": "Severe dehydration detected across the first half of the day.",
+      "objective": "Consume 1.5 liters of water evenly paced across the afternoon.",
+      "time_limit_minutes": 120,
+      "reward": {
+        "exp": 90,
+        "buff": "Cell Regeneration"
+      },
+      "penalty": {
+        "status_effect": "Dehydrated State",
+        "stat_modifiers": { "strength": -3, "agility": -3 },
+        "duration_hours": 6
+      }
+    },
+    {
+      "id": "eq_21",
+      "title": "Lower Body Awakening",
+      "rank": "B",
+      "trigger": "Leg day workout missed or postponed twice.",
+      "objective": "Complete 50 deep bodyweight lunges or weighted squats.",
+      "time_limit_minutes": 8,
+      "reward": {
+        "exp": 130,
+        "strength": 4,
+        "stamina": 2
+      },
+      "penalty": {
+        "status_effect": "Atrophy Warning",
+        "stat_modifiers": { "agility": -2 },
+        "duration_hours": 12
+      }
+    },
+    {
+      "id": "eq_22",
+      "title": "Digital Quarantine",
+      "rank": "A",
+      "trigger": "App usage analytics indicate doom-scrolling or excessive non-productive screen time.",
+      "objective": "Turn off the phone/screen entirely and place it in another room.",
+      "time_limit_minutes": 60,
+      "reward": {
+        "exp": 110,
+        "buff": "Mental Reset"
+      },
+      "penalty": {
+        "status_effect": "Dopamine Burnout",
+        "stat_modifiers": { "perception": -4 },
+        "duration_hours": 8
+      }
+    },
+    {
+      "id": "eq_23",
+      "title": "Protein Synthesis Enforcement",
+      "rank": "A",
+      "trigger": "End-of-day nutritional log reveals a severe protein deficit relative to muscle-building targets.",
+      "objective": "Consume a high-protein shake or clean protein source immediately.",
+      "time_limit_minutes": 20,
+      "reward": {
+        "exp": 100,
+        "buff": "Muscle Recovery Doubled"
+      },
+      "penalty": {
+        "status_effect": "Catabolic State",
+        "description": "Daily muscle gain wiped out"
+      }
+    },
+    {
+      "id": "eq_24",
+      "title": "The Unyielding Grip",
+      "rank": "A",
+      "trigger": "Manual trigger during a moment of high mental stress or frustration.",
+      "objective": "Hang from a pull-up bar or grip strength trainer until failure (minimum 45 seconds).",
+      "time_limit_minutes": null,
+      "reward": {
+        "exp": 85,
+        "strength": 3
+      },
+      "penalty": {
+        "status_effect": "Weak Grip",
+        "stat_modifiers": { "strength": -2 },
+        "duration_hours": 4
+      }
+    },
+    {
+      "id": "eq_25",
+      "title": "Midnight Code Refactor",
+      "rank": "A",
+      "trigger": "Pushing broken code or messy pull requests late at night.",
+      "objective": "Clean, refactor, and document the codebase logic completely.",
+      "time_limit_minutes": 45,
+      "reward": {
+        "exp": 140,
+        "intelligence": 4
+      },
+      "penalty": {
+        "status_effect": "Tech Debt Accumulation",
+        "stat_modifiers": { "intelligence": -3 },
+        "duration_hours": 12
+      }
+    },
+    {
+      "id": "eq_26",
+      "title": "Monarch's Trial of Blood",
+      "rank": "S",
+      "trigger": "Biometric data shows 3 consecutive days of zero active workouts or missed fitness goals.",
+      "objective": "Complete a full high-intensity workout session without stopping.",
+      "time_limit_minutes": 45,
+      "reward": {
+        "exp": 500,
+        "buff": "Monarch's Favor (All stats +5 for 24h)",
+        "title_unlocked": "Monarch's Chosen"
+      },
+      "penalty": {
+        "zone": "Penalty Zone Activated",
+        "forced_transfer_hours": 4,
+        "hp_override": 0.01
+      }
+    },
+    {
+      "id": "eq_27",
+      "title": "The Absolute Silence",
+      "rank": "S",
+      "trigger": "App detects continuous background noise or audio distraction while deep work/study is scheduled.",
+      "objective": "Eliminate all external distractions, silence notifications, and lock into absolute focus.",
+      "time_limit_minutes": 90,
+      "reward": {
+        "exp": 350,
+        "intelligence": 8,
+        "buff": "Elite Focus"
+      },
+      "penalty": {
+        "status_effect": "Shattered Concentration",
+        "description": "Zero XP accumulation for the entire day"
+      }
+    },
+    {
+      "id": "eq_28",
+      "title": "Abyss Recovery Protocol",
+      "rank": "S",
+      "trigger": "Health Connect reports less than 4 hours of sleep combined with high stress metrics and missed steps.",
+      "objective": "Immediate emergency shutdown: ingest electrolytes, stretch, and enforce an offline sleep schedule.",
+      "time_limit_minutes": 15,
+      "reward": {
+        "exp": 400,
+        "effect": "System Stability Restored, HP Fully Regenerated"
+      },
+      "penalty": {
+        "zone": "System Crash Warning",
+        "forced_logout": true,
+        "lockout_hours": 24,
+        "stat_halving": true
+      }
+    },
+    {
+      "id": "eq_29",
+      "title": "The 5K Vanguard Execution",
+      "rank": "S",
+      "trigger": "System detects long-term plateau in cardiovascular endurance or step consistency.",
+      "objective": "Execute an uninterrupted 5-kilometer run or intense sustained cardio session.",
+      "time_limit_minutes": 40,
+      "reward": {
+        "exp": 600,
+        "agility": 10,
+        "stamina": 8,
+        "title_unlocked": "Elite Runner"
+      },
+      "penalty": {
+        "status_effect": "Stagnant Vessel",
+        "description": "Maximum level cap restricted by 1 level until completed"
+      }
+    },
+    {
+      "id": "eq_30",
+      "title": "Shadow Sovereign's Mandate",
+      "rank": "S",
+      "trigger": "Random security audit triggered when user attempts to bypass daily fitness or task quotas.",
+      "objective": "Complete all pending daily quests, clear task backlog, and log 10,000 steps before midnight.",
+      "time_limit_minutes": null,
+      "reward": {
+        "exp": 1000,
+        "effect": "Shadow Extraction Slot Unlocked, Massive Stat Surge"
+      },
+      "penalty": {
+        "zone": "Severe Penalty Zone",
+        "description": "Forfeiture of daily gains, base stats dropped to Level 1 for 24 hours."
+      }
+    }
+  ]
+}
