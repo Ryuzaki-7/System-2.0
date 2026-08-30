@@ -1,9 +1,9 @@
 import { encode } from "base-64";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const GITHUB_TOKEN = "YOUR_PERSONAL_ACCESS_TOKEN";
-const REPO_OWNER = "YOUR_GITHUB_USERNAME";
-const REPO_NAME = "YOUR_PRIVATE_REPO_NAME";
+const GITHUB_TOKEN = "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";
+const REPO_OWNER = "Ryuzaki-7";
+const REPO_NAME = "System-2.0";
 const FILE_PATH = "backups/solo_leveling_save.json";
 
 const GITHUB_API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
