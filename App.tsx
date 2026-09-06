@@ -180,6 +180,10 @@ export default function App() {
                   showsVerticalScrollIndicator={false}
                   contentContainerStyle={styles.scrollContent}
                 >
+                  {/* Moved Header and Biometrics to Status Screen */}
+                  <PlayerHeader />
+                  <BiometricPanel />
+
                   <View style={styles.card}>
                     <View style={styles.profileRow}>
                       <View>
@@ -262,11 +266,11 @@ export default function App() {
                   showsVerticalScrollIndicator={false}
                   contentContainerStyle={styles.scrollContent}
                 >
-                  <PlayerHeader />
-                  <BiometricPanel />
+                  {/* QuestBoard is now completely isolated */}
                   <QuestBoard />
                 </ScrollView>
               </View>
+
               {/* PAGE 3: INVENTORY */}
               <View style={styles.pageContainer}>
                 <ScrollView

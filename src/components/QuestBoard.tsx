@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { usePlayerStore } from "../store/usePlayerStore";
 import { SystemAudio } from "../utils/soundSystem";
-import { SystemResetButton } from "./SystemResetButton";
 
 export const QuestBoard = () => {
   const {
@@ -66,6 +65,7 @@ export const QuestBoard = () => {
               <TouchableOpacity
                 key={obj.id}
                 style={styles.objectiveRow}
+                disabled={penaltyQuest.isClaimed}
                 onPress={() => {
                   SystemAudio.tick();
                   updateObjectiveProgress(
@@ -142,57 +142,63 @@ export const QuestBoard = () => {
   return (
     <View style={styles.container}>
       {/* Navigation Tabs */}
-      <View style={styles.tabContainer}>
-        <TouchableOpacity
-          style={[styles.tab, activeTab === "DAILY" && styles.activeTabDaily]}
-          onPress={() => setActiveTab("DAILY")}
+      <View style={styles.tabWrapper}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.tabContainer}
         >
-          <Text
-            style={[
-              styles.tabText,
-              activeTab === "DAILY" && styles.activeTabTextDaily,
-            ]}
+          <TouchableOpacity
+            style={[styles.tab, activeTab === "DAILY" && styles.activeTabDaily]}
+            onPress={() => setActiveTab("DAILY")}
           >
-            [ DAILY ]
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === "DAILY" && styles.activeTabTextDaily,
+              ]}
+            >
+              [ DAILY ]
+            </Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={[styles.tab, activeTab === "SIDE" && styles.activeTabSide]}
-          onPress={() => setActiveTab("SIDE")}
-        >
-          <Text
-            style={[
-              styles.tabText,
-              activeTab === "SIDE" && styles.activeTabTextSide,
-            ]}
+          <TouchableOpacity
+            style={[styles.tab, activeTab === "SIDE" && styles.activeTabSide]}
+            onPress={() => setActiveTab("SIDE")}
           >
-            [ AUXILIARY ]
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === "SIDE" && styles.activeTabTextSide,
+              ]}
+            >
+              [ AUXILIARY ]
+            </Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={[
-            styles.tab,
-            activeTab === "EMERGENCY" && styles.activeTabEmergency,
-            suddenQuestCount > 0 &&
-              activeTab !== "EMERGENCY" &&
-              styles.urgentTabAlert,
-          ]}
-          onPress={() => setActiveTab("EMERGENCY")}
-        >
-          <Text
+          <TouchableOpacity
             style={[
-              styles.tabText,
-              activeTab === "EMERGENCY" && styles.activeTabTextEmergency,
+              styles.tab,
+              activeTab === "EMERGENCY" && styles.activeTabEmergency,
               suddenQuestCount > 0 &&
                 activeTab !== "EMERGENCY" &&
-                styles.urgentTabTextAlert,
+                styles.urgentTabAlert,
             ]}
+            onPress={() => setActiveTab("EMERGENCY")}
           >
-            [ SUDDEN QUEST ] {suddenQuestCount > 0 && `(${suddenQuestCount})`}
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === "EMERGENCY" && styles.activeTabTextEmergency,
+                suddenQuestCount > 0 &&
+                  activeTab !== "EMERGENCY" &&
+                  styles.urgentTabTextAlert,
+              ]}
+            >
+              [ SUDDEN QUEST ] {suddenQuestCount > 0 && `(${suddenQuestCount})`}
+            </Text>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
 
       <ScrollView
@@ -262,6 +268,7 @@ export const QuestBoard = () => {
                   <TouchableOpacity
                     key={obj.id}
                     style={styles.objectiveRow}
+                    disabled={quest.isClaimed}
                     onPress={() => {
                       SystemAudio.tick();
                       updateObjectiveProgress(
@@ -339,7 +346,6 @@ export const QuestBoard = () => {
             );
           })
         )}
-        <SystemResetButton />
       </ScrollView>
     </View>
   );
@@ -354,13 +360,16 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingBottom: 60,
   },
-  tabContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+  tabWrapper: {
     marginBottom: 20,
     borderBottomWidth: 1,
     borderColor: "#1d2d50",
     paddingBottom: 10,
+  },
+  tabContainer: {
+    flexDirection: "row",
+    gap: 12,
+    paddingHorizontal: 5,
   },
   tab: {
     paddingVertical: 8,

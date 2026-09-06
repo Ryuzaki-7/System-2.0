@@ -9,6 +9,12 @@ export default {
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "light",
+    updates: {
+      url: "https://u.expo.dev/1ba39cc8-33f0-490b-8912-c7a335a757d3",
+    },
+    runtimeVersion: {
+      policy: "appVersion",
+    },
     ios: {
       supportsTablet: true,
     },
