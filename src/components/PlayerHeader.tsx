@@ -23,9 +23,6 @@ export const PlayerHeader = () => {
         </View>
         <View style={styles.rightActionRow}>
           <Text style={styles.levelText}>LVL {level}</Text>
-          <TouchableOpacity style={styles.syncButton} onPress={handleSync}>
-            <Text style={styles.syncButtonText}>[ SYNC ]</Text>
-          </TouchableOpacity>
         </View>
       </View>
 

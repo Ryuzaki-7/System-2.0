@@ -1,14 +1,168 @@
 // src/components/QuestBoard.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
   ScrollView,
+  Animated,
+  Easing,
 } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { usePlayerStore } from "../store/usePlayerStore";
 import { SystemAudio } from "../utils/soundSystem";
+
+// --- ANIMATED & UI COMPONENTS ---
+
+const SystemCheckbox = ({ isCompleted }: { isCompleted: boolean }) => {
+  const scaleAnim = useRef(new Animated.Value(0)).current;
+  const opacityAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (isCompleted) {
+      Animated.parallel([
+        Animated.spring(scaleAnim, {
+          toValue: 1,
+          tension: 50,
+          friction: 3,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacityAnim, {
+          toValue: 1,
+          duration: 200,
+          easing: Easing.out(Easing.ease),
+          useNativeDriver: true,
+        }),
+      ]).start();
+    } else {
+      scaleAnim.setValue(0);
+      opacityAnim.setValue(0);
+    }
+  }, [isCompleted]);
+
+  return (
+    <View style={styles.checkboxBase}>
+      <Animated.View
+        style={[
+          styles.checkboxGlow,
+          {
+            opacity: opacityAnim,
+            transform: [{ scale: scaleAnim }],
+          },
+        ]}
+      >
+        <MaterialCommunityIcons name="check-bold" size={16} color="#ffffff" />
+      </Animated.View>
+    </View>
+  );
+};
+
+const SystemBackground = () => {
+  const scanlineAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.loop(
+      Animated.timing(scanlineAnim, {
+        toValue: 1,
+        duration: 5000,
+        easing: Easing.linear,
+        useNativeDriver: true,
+      }),
+    ).start();
+  }, []);
+
+  const scanlineY = scanlineAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [-100, 1000],
+  });
+
+  return (
+    <View
+      style={[
+        StyleSheet.absoluteFill,
+        { backgroundColor: "#020617", overflow: "hidden" },
+      ]}
+      pointerEvents="none"
+    >
+      <Animated.View
+        style={{
+          width: "100%",
+          height: 150,
+          borderBottomWidth: 1.5,
+          borderBottomColor: "rgba(0, 212, 255, 0.4)",
+          backgroundColor: "rgba(0, 212, 255, 0.02)",
+          transform: [{ translateY: scanlineY }],
+          shadowColor: "#00d4ff",
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.8,
+          shadowRadius: 15,
+        }}
+      />
+    </View>
+  );
+};
+
+const HolographicCorners = ({ color }: { color: string }) => {
+  const corner = {
+    position: "absolute" as const,
+    width: 12,
+    height: 12,
+    borderColor: color,
+  };
+  return (
+    <>
+      <View
+        style={[
+          corner,
+          { top: -1.5, left: -1.5, borderTopWidth: 2, borderLeftWidth: 2 },
+        ]}
+      />
+      <View
+        style={[
+          corner,
+          { top: -1.5, right: -1.5, borderTopWidth: 2, borderRightWidth: 2 },
+        ]}
+      />
+      <View
+        style={[
+          corner,
+          {
+            bottom: -1.5,
+            left: -1.5,
+            borderBottomWidth: 2,
+            borderLeftWidth: 2,
+          },
+        ]}
+      />
+      <View
+        style={[
+          corner,
+          {
+            bottom: -1.5,
+            right: -1.5,
+            borderBottomWidth: 2,
+            borderRightWidth: 2,
+          },
+        ]}
+      />
+    </>
+  );
+};
+
+// Simplified to act as geometric border gaps
+const SystemMicroLabels = () => (
+  <>
+    <View
+      style={[styles.microLabelContainer, { top: -2, right: 30, width: 80 }]}
+    />
+    <View
+      style={[styles.microLabelContainer, { bottom: -2, left: 30, width: 120 }]}
+    />
+  </>
+);
+
+// --- MAIN BOARD ---
 
 export const QuestBoard = () => {
   const {
@@ -22,7 +176,7 @@ export const QuestBoard = () => {
     "DAILY",
   );
 
-  // 1. PENALTY ZONE LOCKDOWN (Overrides standard UI when penalty is active)
+  // 1. PENALTY ZONE LOCKDOWN
   if (isPenaltyActive) {
     const penaltyQuest = activeQuests.find((q) => q.type === "PENALTY");
 
@@ -45,6 +199,9 @@ export const QuestBoard = () => {
           contentContainerStyle={styles.scrollContent}
         >
           <View style={[styles.card, styles.penaltyCard]}>
+            <HolographicCorners color="#ff0000" />
+            <SystemMicroLabels />
+
             <View style={styles.headerRow}>
               <Text style={styles.penaltyTag}>[ PENALTY ZONE ]</Text>
               <Text
@@ -75,13 +232,7 @@ export const QuestBoard = () => {
                   );
                 }}
               >
-                <View
-                  style={[
-                    styles.checkbox,
-                    styles.penaltyCheckbox,
-                    obj.isCompleted && styles.checkboxDone,
-                  ]}
-                />
+                <SystemCheckbox isCompleted={obj.isCompleted} />
                 <View style={{ flex: 1 }}>
                   <Text
                     style={[
@@ -107,7 +258,6 @@ export const QuestBoard = () => {
               ]}
               disabled={!allComplete || penaltyQuest.isClaimed}
               onPress={() => {
-                console.log("Button pressed!");
                 SystemAudio.success();
                 completeQuest(penaltyQuest.id);
               }}
@@ -132,22 +282,22 @@ export const QuestBoard = () => {
   }
 
   // 2. STANDARD DASHBOARD UI
-  const displayedQuests = activeQuests.filter(
-    (quest) => quest.type === activeTab,
-  );
   const suddenQuestCount = activeQuests.filter(
     (q) => q.type === "EMERGENCY" && !q.isClaimed,
   ).length;
 
+  const displayedQuests = activeQuests.filter((quest) => {
+    if (quest.type !== activeTab) return false;
+    if (quest.type === "EMERGENCY" && quest.isClaimed) return false;
+    return true;
+  });
+
   return (
     <View style={styles.container}>
-      {/* Navigation Tabs */}
+      <SystemBackground />
+
       <View style={styles.tabWrapper}>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.tabContainer}
-        >
+        <View style={styles.tabContainer}>
           <TouchableOpacity
             style={[styles.tab, activeTab === "DAILY" && styles.activeTabDaily]}
             onPress={() => setActiveTab("DAILY")}
@@ -157,6 +307,8 @@ export const QuestBoard = () => {
                 styles.tabText,
                 activeTab === "DAILY" && styles.activeTabTextDaily,
               ]}
+              numberOfLines={1}
+              adjustsFontSizeToFit
             >
               [ DAILY ]
             </Text>
@@ -171,6 +323,8 @@ export const QuestBoard = () => {
                 styles.tabText,
                 activeTab === "SIDE" && styles.activeTabTextSide,
               ]}
+              numberOfLines={1}
+              adjustsFontSizeToFit
             >
               [ AUXILIARY ]
             </Text>
@@ -194,11 +348,15 @@ export const QuestBoard = () => {
                   activeTab !== "EMERGENCY" &&
                   styles.urgentTabTextAlert,
               ]}
+              numberOfLines={1}
+              adjustsFontSizeToFit
             >
-              [ SUDDEN QUEST ] {suddenQuestCount > 0 && `(${suddenQuestCount})`}
+              {suddenQuestCount > 0
+                ? `[ SUDDEN ] (${suddenQuestCount})`
+                : "[ SUDDEN ]"}
             </Text>
           </TouchableOpacity>
-        </ScrollView>
+        </View>
       </View>
 
       <ScrollView
@@ -221,6 +379,12 @@ export const QuestBoard = () => {
             const isEmergency = quest.type === "EMERGENCY";
             const isSide = quest.type === "SIDE";
 
+            const cardThemeColor = isEmergency
+              ? "#ff3333"
+              : isSide
+                ? "#8b5cf6"
+                : "#00d4ff";
+
             return (
               <View
                 key={quest.id}
@@ -230,6 +394,9 @@ export const QuestBoard = () => {
                   isSide && styles.sideCard,
                 ]}
               >
+                <HolographicCorners color={cardThemeColor} />
+                <SystemMicroLabels />
+
                 <View style={styles.headerRow}>
                   <Text
                     style={[
@@ -278,14 +445,7 @@ export const QuestBoard = () => {
                       );
                     }}
                   >
-                    <View
-                      style={[
-                        styles.checkbox,
-                        isEmergency && styles.emergencyCheckbox,
-                        isSide && styles.sideCheckbox,
-                        obj.isCompleted && styles.checkboxDone,
-                      ]}
-                    />
+                    <SystemCheckbox isCompleted={obj.isCompleted} />
                     <View style={{ flex: 1 }}>
                       <Text
                         style={[
@@ -352,7 +512,7 @@ export const QuestBoard = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, width: "100%" },
+  container: { flex: 1, width: "100%", overflow: "hidden", borderRadius: 8 },
   scrollView: {
     flex: 1,
     width: "100%",
@@ -363,28 +523,33 @@ const styles = StyleSheet.create({
   tabWrapper: {
     marginBottom: 20,
     borderBottomWidth: 1,
-    borderColor: "#1d2d50",
+    borderColor: "rgba(0, 212, 255, 0.3)",
     paddingBottom: 10,
+    zIndex: 2,
   },
   tabContainer: {
     flexDirection: "row",
-    gap: 12,
+    justifyContent: "space-between",
+    width: "100%",
     paddingHorizontal: 5,
+    gap: 8,
   },
   tab: {
-    paddingVertical: 8,
-    paddingHorizontal: 10,
+    flex: 1,
+    paddingVertical: 10,
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 4,
     borderWidth: 1,
     borderColor: "transparent",
   },
   activeTabDaily: {
-    backgroundColor: "rgba(255, 170, 0, 0.1)",
-    borderColor: "#ffaa00",
-  },
-  activeTabSide: {
     backgroundColor: "rgba(0, 212, 255, 0.1)",
     borderColor: "#00d4ff",
+  },
+  activeTabSide: {
+    backgroundColor: "rgba(139, 92, 246, 0.1)",
+    borderColor: "#8b5cf6",
   },
   activeTabEmergency: {
     backgroundColor: "rgba(255, 51, 51, 0.1)",
@@ -398,10 +563,11 @@ const styles = StyleSheet.create({
     color: "#8892b0",
     fontFamily: "monospace",
     fontSize: 13,
-    fontWeight: "bold",
+    fontWeight: "900",
+    letterSpacing: 1,
   },
-  activeTabTextDaily: { color: "#ffaa00" },
-  activeTabTextSide: { color: "#00d4ff" },
+  activeTabTextDaily: { color: "#00d4ff" },
+  activeTabTextSide: { color: "#8b5cf6" },
   activeTabTextEmergency: { color: "#ff3333" },
   urgentTabTextAlert: { color: "#ff3333" },
   emptyCard: {
@@ -415,27 +581,29 @@ const styles = StyleSheet.create({
   },
   card: {
     width: "100%",
-    backgroundColor: "#0a192f",
-    borderColor: "#ffaa00",
+    backgroundColor: "rgba(4, 12, 25, 0.4)",
+    borderColor: "#00d4ff",
     borderWidth: 1.5,
     padding: 20,
-    borderRadius: 8,
-    shadowColor: "#ffaa00",
+    borderRadius: 2,
+    shadowColor: "#00d4ff",
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.8,
-    shadowRadius: 15,
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
     elevation: 8,
     marginBottom: 20,
+    zIndex: 2,
+    overflow: "visible",
   },
   emergencyCard: {
     borderColor: "#ff3333",
-    backgroundColor: "#1a0505",
+    backgroundColor: "rgba(26, 5, 5, 0.6)",
     shadowColor: "#ff3333",
   },
   sideCard: {
-    borderColor: "#00d4ff",
-    backgroundColor: "#05141a",
-    shadowColor: "#00d4ff",
+    borderColor: "#8b5cf6",
+    backgroundColor: "rgba(13, 5, 26, 0.6)",
+    shadowColor: "#8b5cf6",
   },
   headerRow: {
     flexDirection: "row",
@@ -445,13 +613,13 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   systemTag: {
-    color: "#ffaa00",
+    color: "#00d4ff",
     fontSize: 16,
     fontWeight: "bold",
     letterSpacing: 1,
   },
   emergencyTag: { color: "#ff3333" },
-  sideTag: { color: "#00d4ff" },
+  sideTag: { color: "#8b5cf6" },
   timerText: {
     color: "#ff3333",
     fontSize: 12,
@@ -459,55 +627,76 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     textAlign: "right",
   },
-  sideTimer: { color: "#00d4ff" },
+  sideTimer: { color: "#8b5cf6" },
   questTitle: {
-    color: "#e6f1ff",
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 5,
+    color: "#ffffff",
+    fontSize: 19,
+    fontFamily: "serif",
+    fontWeight: "900",
+    marginBottom: 6,
+    letterSpacing: 0.5,
   },
   questDesc: {
-    color: "#8892b0",
-    fontSize: 12,
+    color: "#a8b2d1",
+    fontSize: 13,
+    fontFamily: "serif",
     fontStyle: "italic",
     marginBottom: 15,
   },
   divider: {
     height: 1,
-    backgroundColor: "rgba(255, 170, 0, 0.3)",
+    backgroundColor: "rgba(0, 212, 255, 0.4)",
     marginVertical: 10,
   },
   emergencyDivider: { backgroundColor: "rgba(255, 51, 51, 0.3)" },
-  sideDivider: { backgroundColor: "rgba(0, 212, 255, 0.3)" },
+  sideDivider: { backgroundColor: "rgba(139, 92, 246, 0.4)" },
   objectiveRow: {
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 8,
   },
-  checkbox: {
-    width: 20,
-    height: 20,
-    borderWidth: 1,
-    borderColor: "#ffaa00",
+  checkboxBase: {
+    width: 24,
+    height: 24,
+    borderWidth: 1.5,
+    borderColor: "rgba(0, 212, 255, 0.5)",
     marginRight: 15,
-    borderRadius: 3,
+    borderRadius: 4,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 212, 255, 0.05)",
   },
-  emergencyCheckbox: { borderColor: "#ff3333" },
-  sideCheckbox: { borderColor: "#00d4ff" },
-  checkboxDone: { backgroundColor: "#64ffda", borderColor: "#64ffda" },
-  objectiveText: { color: "#ccd6f6", fontSize: 14, fontFamily: "monospace" },
+  checkboxGlow: {
+    width: 24,
+    height: 24,
+    backgroundColor: "#00d4ff",
+    borderRadius: 3,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#00d4ff",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.8,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  objectiveText: {
+    color: "#e2e8f0",
+    fontSize: 14,
+    fontFamily: "sans-serif",
+  },
   objectiveTextDone: {
-    color: "#64ffda",
-    textDecorationLine: "line-through",
-    opacity: 0.7,
+    color: "#00d4ff",
+    textDecorationLine: "none",
+    fontWeight: "bold",
   },
   rewardText: {
-    color: "#ffaa00",
+    color: "#8b5cf6",
     fontSize: 10,
-    marginTop: 2,
+    marginTop: 4,
     fontFamily: "monospace",
+    fontWeight: "bold",
   },
-  sideRewardText: { color: "#00d4ff" },
+  sideRewardText: { color: "#8b5cf6" },
   claimButton: {
     marginTop: 20,
     paddingVertical: 12,
@@ -518,16 +707,16 @@ const styles = StyleSheet.create({
   },
   claimButtonDisabled: { backgroundColor: "transparent" },
   claimButtonActive: {
-    backgroundColor: "rgba(100, 255, 218, 0.1)",
-    borderColor: "#64ffda",
+    backgroundColor: "rgba(0, 212, 255, 0.1)",
+    borderColor: "#00d4ff",
   },
   emergencyButtonActive: {
     backgroundColor: "rgba(255, 51, 51, 0.2)",
     borderColor: "#ff3333",
   },
   sideButtonActive: {
-    backgroundColor: "rgba(0, 212, 255, 0.2)",
-    borderColor: "#00d4ff",
+    backgroundColor: "rgba(139, 92, 246, 0.2)",
+    borderColor: "#8b5cf6",
   },
   claimText: {
     fontSize: 14,
@@ -535,9 +724,9 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
     color: "#8892b0",
   },
-  claimTextActive: { color: "#64ffda" },
+  claimTextActive: { color: "#00d4ff" },
   emergencyTextActive: { color: "#ff3333" },
-  sideTextActive: { color: "#00d4ff" },
+  sideTextActive: { color: "#8b5cf6" },
   subText: {
     color: "#8892b0",
     fontSize: 14,
@@ -545,7 +734,6 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     textAlign: "center",
   },
-  // Penalty Zone Custom Styles
   penaltyLockdownHeader: {
     padding: 15,
     backgroundColor: "rgba(255, 0, 0, 0.1)",
@@ -569,7 +757,7 @@ const styles = StyleSheet.create({
   },
   penaltyCard: {
     borderColor: "#ff0000",
-    backgroundColor: "#1a0000",
+    backgroundColor: "rgba(26, 0, 0, 0.8)",
     shadowColor: "#ff0000",
   },
   penaltyTag: {
@@ -585,4 +773,10 @@ const styles = StyleSheet.create({
     borderColor: "#ff0000",
   },
   penaltyTextActive: { color: "#ff0000" },
+  microLabelContainer: {
+    position: "absolute",
+    backgroundColor: "#020617",
+    height: 6,
+    zIndex: 10,
+  },
 });

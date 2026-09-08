@@ -22,9 +22,57 @@ import { SystemAudio } from "./src/utils/soundSystem";
 import { PlayerHeader } from "./src/components/PlayerHeader";
 import { SystemAwakening } from "./src/components/SystemAwakening";
 import { NotificationService } from "./src/services/NotificationService";
-import { BiometricPanel } from "./src/components/BiometricPanel"; // Adjust path if needed
+import { BiometricPanel } from "./src/components/BiometricPanel";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
+
+// --- UI COMPONENTS ---
+const HolographicCorners = ({ color }: { color: string }) => {
+  const corner = {
+    position: "absolute" as const,
+    width: 12,
+    height: 12,
+    borderColor: color,
+  };
+  return (
+    <>
+      <View
+        style={[
+          corner,
+          { top: -1.5, left: -1.5, borderTopWidth: 2, borderLeftWidth: 2 },
+        ]}
+      />
+      <View
+        style={[
+          corner,
+          { top: -1.5, right: -1.5, borderTopWidth: 2, borderRightWidth: 2 },
+        ]}
+      />
+      <View
+        style={[
+          corner,
+          {
+            bottom: -1.5,
+            left: -1.5,
+            borderBottomWidth: 2,
+            borderLeftWidth: 2,
+          },
+        ]}
+      />
+      <View
+        style={[
+          corner,
+          {
+            bottom: -1.5,
+            right: -1.5,
+            borderBottomWidth: 2,
+            borderRightWidth: 2,
+          },
+        ]}
+      />
+    </>
+  );
+};
 
 const ProgressBar = ({
   label,
@@ -47,7 +95,11 @@ const ProgressBar = ({
         <View
           style={[
             styles.gaugeFill,
-            { width: `${percentage}%`, backgroundColor: color },
+            {
+              width: `${percentage}%`,
+              backgroundColor: color,
+              shadowColor: color,
+            },
           ]}
         />
       </View>
@@ -74,15 +126,12 @@ export default function App() {
     streak,
     isPenaltyActive,
   } = usePlayerStore();
-  const handleMidnight = usePlayerStore((state) => state.handleMidnight);
 
   useEffect(() => {
     const initializeNotifications = async () => {
-      // 1. Request Android/iOS notification permissions
       const granted = await NotificationService.requestPermissions();
       if (!granted) return;
 
-      // 2. Calculate midnight timestamp for today's deadline
       const now = new Date();
       const midnight = new Date(
         now.getFullYear(),
@@ -93,7 +142,6 @@ export default function App() {
         0,
       );
 
-      // 3. Arm the scary 4-hour and 30-minute warning schedules
       await NotificationService.scheduleDailyWarnings(midnight.getTime());
     };
 
@@ -103,12 +151,8 @@ export default function App() {
   useEffect(() => {
     const unsubscribe = systemClock.subscribe((newTime) => {
       setTime(newTime);
-
       const currentDay = newTime.getDate();
       if (currentDay !== lastDateRef.current) {
-        console.log(
-          `[CLOCK]: Date changed from ${lastDateRef.current} to ${currentDay}`,
-        );
         lastDateRef.current = currentDay;
         usePlayerStore.getState().handleMidnight();
       }
@@ -180,20 +224,33 @@ export default function App() {
                   showsVerticalScrollIndicator={false}
                   contentContainerStyle={styles.scrollContent}
                 >
-                  {/* Moved Header and Biometrics to Status Screen */}
                   <PlayerHeader />
                   <BiometricPanel />
 
                   <View style={styles.card}>
-                    <View style={styles.profileRow}>
-                      <View>
-                        <Text style={styles.nameText}>NAME: {name}</Text>
-                        <Text style={styles.statLine}>LEVEL: {level}</Text>
+                    <HolographicCorners color="#00d4ff" />
+
+                    <View style={styles.infoContainer}>
+                      <View style={styles.infoRow}>
+                        <Text style={styles.infoLabel}>NAME</Text>
+                        <Text style={styles.infoValue}>{name}</Text>
                       </View>
-                      <View style={{ alignItems: "flex-end" }}>
-                        <Text style={styles.statLine}>STREAK: {streak}</Text>
-                        <Text style={styles.statLine}>
-                          EXP: {xp}/{xpToNextLevel}
+                      <View style={styles.infoRow}>
+                        <Text style={styles.infoLabel}>LEVEL</Text>
+                        <Text style={styles.infoValueTech}>{level}</Text>
+                      </View>
+                      <View style={styles.infoRow}>
+                        <Text style={styles.infoLabel}>CLASS</Text>
+                        <Text style={styles.infoValueTech}>NONE</Text>
+                      </View>
+                      <View style={styles.infoRow}>
+                        <Text style={styles.infoLabel}>TITLE</Text>
+                        <Text style={styles.infoValueTech}>NONE</Text>
+                      </View>
+                      <View style={styles.infoRow}>
+                        <Text style={styles.infoLabel}>EXP</Text>
+                        <Text style={styles.infoValueTech}>
+                          {xp} / {xpToNextLevel}
                         </Text>
                       </View>
                     </View>
@@ -250,10 +307,14 @@ export default function App() {
                         <Text style={styles.buttonText}>To 23:59</Text>
                       </TouchableOpacity>
                       <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => systemClock.resetToRealTime()}
+                        style={[styles.button, { borderColor: "#ffaa00" }]}
+                        onPress={() =>
+                          usePlayerStore.setState({ isAwakened: false })
+                        }
                       >
-                        <Text style={styles.buttonText}>Reset</Text>
+                        <Text style={[styles.buttonText, { color: "#ffaa00" }]}>
+                          Re-Awaken
+                        </Text>
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -266,7 +327,6 @@ export default function App() {
                   showsVerticalScrollIndicator={false}
                   contentContainerStyle={styles.scrollContent}
                 >
-                  {/* QuestBoard is now completely isolated */}
                   <QuestBoard />
                 </ScrollView>
               </View>
@@ -325,22 +385,6 @@ export default function App() {
                   INVENTORY
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                style={[styles.button, { borderColor: "#ff3333" }]}
-                onPress={() => {
-                  SystemAudio.warning(); // 🚨 Fires the emergency haptic/error vibration
-                  usePlayerStore.setState((state) => ({
-                    activeQuests: [
-                      ...state.activeQuests,
-                      QuestEngine.generateEmergencyQuest(),
-                    ],
-                  }));
-                }}
-              >
-                <Text style={[styles.buttonText, { color: "#ff3333" }]}>
-                  Trigger Emergency
-                </Text>
-              </TouchableOpacity>
             </View>
           </>
         )}
@@ -350,8 +394,8 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#050a14" },
-  penaltyBackground: { backgroundColor: "#2a0505" },
+  container: { flex: 1, backgroundColor: "#020617" }, // Dropped to deep void black
+  penaltyBackground: { backgroundColor: "#1a0505" },
   header: {
     width: "100%",
     alignItems: "center",
@@ -363,6 +407,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     letterSpacing: 2,
+    fontFamily: "serif", // Added serif for authority
   },
   clockText: {
     color: "#8892b0",
@@ -375,54 +420,82 @@ const styles = StyleSheet.create({
   scrollContent: { padding: 20, alignItems: "center", paddingBottom: 40 },
   card: {
     width: "100%",
-    backgroundColor: "rgba(10, 25, 47, 0.85)",
+    backgroundColor: "rgba(4, 12, 25, 0.4)", // Highly transparent glass
     borderColor: "#00d4ff",
     borderWidth: 1.5,
     padding: 20,
-    borderRadius: 8,
+    borderRadius: 2, // Sharpened corners
     shadowColor: "#00d4ff",
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.7,
+    shadowOpacity: 0.3,
     shadowRadius: 10,
-    elevation: 10,
+    elevation: 8,
+    overflow: "visible",
   },
-  profileRow: {
+  infoContainer: {
+    marginBottom: 5,
+  },
+  infoRow: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 10,
+    alignItems: "center",
+    marginBottom: 8,
   },
-  nameText: {
-    color: "#e6f1ff",
-    fontSize: 16,
+  infoLabel: {
+    color: "#00d4ff",
+    fontSize: 13,
+    fontFamily: "monospace",
     fontWeight: "bold",
+    width: 70,
     letterSpacing: 1,
-    marginBottom: 4,
+  },
+  infoValue: {
+    color: "#ffffff",
+    fontSize: 17,
+    fontFamily: "serif",
+    fontWeight: "900",
+    letterSpacing: 1,
+    textTransform: "uppercase",
+  },
+  infoValueTech: {
+    color: "#e2e8f0",
+    fontSize: 14,
+    fontFamily: "monospace",
+    letterSpacing: 1,
   },
   divider: {
     height: 1,
-    backgroundColor: "rgba(0, 212, 255, 0.3)",
+    backgroundColor: "rgba(0, 212, 255, 0.4)",
     marginVertical: 15,
   },
   statLine: {
-    color: "#ccd6f6",
+    color: "#e2e8f0",
     fontSize: 14,
     fontFamily: "monospace",
     marginVertical: 2,
   },
-  gaugeContainer: { marginVertical: 6 },
+  gaugeContainer: { marginVertical: 8 },
   gaugeLabel: {
-    color: "#ccd6f6",
+    color: "#00d4ff",
     fontSize: 12,
     fontFamily: "monospace",
-    marginBottom: 4,
+    marginBottom: 6,
+    fontWeight: "bold",
+    letterSpacing: 1,
   },
   gaugeBackground: {
-    height: 8,
-    backgroundColor: "#112240",
-    borderRadius: 4,
+    height: 10,
+    backgroundColor: "rgba(0, 212, 255, 0.05)", // Transparent void fill
+    borderColor: "rgba(0, 212, 255, 0.3)", // Tech border
+    borderWidth: 1,
+    borderRadius: 0, // Squared edges
     overflow: "hidden",
   },
-  gaugeFill: { height: "100%" },
+  gaugeFill: {
+    height: "100%",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 5,
+  },
   radarContainer: { alignItems: "center", marginVertical: 15 },
   statsGrid: {
     flexDirection: "row",
@@ -434,8 +507,8 @@ const styles = StyleSheet.create({
     marginTop: 30,
     width: "100%",
     padding: 15,
-    backgroundColor: "#112240",
-    borderRadius: 8,
+    backgroundColor: "rgba(4, 12, 25, 0.4)",
+    borderRadius: 2,
     borderWidth: 1,
     borderColor: "#233554",
   },
@@ -445,30 +518,37 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 10,
     textAlign: "center",
+    fontFamily: "monospace",
   },
   buttonRow: { flexDirection: "row", justifyContent: "space-between" },
   button: {
-    backgroundColor: "#0a192f",
+    backgroundColor: "rgba(0, 212, 255, 0.05)",
     borderColor: "#00d4ff",
     borderWidth: 1,
     paddingVertical: 8,
     paddingHorizontal: 15,
-    borderRadius: 4,
+    borderRadius: 2,
   },
   buttonText: { color: "#00d4ff", fontSize: 12, fontWeight: "bold" },
   tabBar: {
     flexDirection: "row",
-    backgroundColor: "#0a192f",
+    backgroundColor: "#020617",
     borderTopWidth: 1,
-    borderTopColor: "#233554",
+    borderTopColor: "rgba(0, 212, 255, 0.3)",
     paddingBottom: 10,
     paddingTop: 10,
   },
   tab: { flex: 1, alignItems: "center", paddingVertical: 10 },
-  activeTab: { borderBottomWidth: 2, borderBottomColor: "#00d4ff" },
+  activeTab: {
+    borderTopWidth: 2, // Moved border to the top for a floor-lit hologram look
+    borderTopColor: "#00d4ff",
+    marginTop: -10, // Offsets the padding to attach directly to the top border
+    paddingTop: 12,
+  },
   tabText: {
     color: "#8892b0",
     fontSize: 12,
+    fontFamily: "monospace",
     fontWeight: "bold",
     letterSpacing: 1,
   },

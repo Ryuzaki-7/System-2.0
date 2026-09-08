@@ -52,6 +52,7 @@ export default {
           },
         },
       ],
+      "expo-font",
     ],
     extra: {
       eas: {
